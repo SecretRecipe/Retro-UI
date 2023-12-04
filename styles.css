@@ -5,12 +5,15 @@
 }
 
 .Desktop {
-    border: 2px solid blue;
     display: flex;
     flex-direction: column; 
     justify-content: space-between;
     width: 100vw;
     height: 100vh;
+    background-image: url("images/main/wallpaper.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* ======== DESKTOP APPS =========== */
@@ -31,16 +34,51 @@
 /* ======== MENU BAR =========== */
 
 .Windows.bar {
+    display: flex;
+    justify-content: end;
     width: 100vw;
     height: 55px;
-    border: 2px solid red;
+    background: blue;
     position: relative;
 }
 
 .Windows.bar button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    left: -25px;
     width: 150px;
     height: 100%;
-    position: absolute;
-    left: -40px;
     border-radius: 10px;
+    border: none;
+    background: green;
 }
+
+.Windows.bar .Button.inner.content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 10px;
+}
+
+.Windows.bar .Button.inner.content img {
+    width: 30px; 
+    height: 30px;
+}
+
+.Windows.bar .Button.inner.content span {
+    font-size: 22px;
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
+.Windows.bar .Time.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 100%;
+    background: rgb(0, 89, 255);
+    color: white;
+} 
