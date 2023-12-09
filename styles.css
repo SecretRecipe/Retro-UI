@@ -14,37 +14,188 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: Tahoma, sans-serif;
+    text-shadow: 1px 1px black;
 }
 
 /* ======== DESKTOP APPS =========== */
 
-.Apps {
+.Desktop .Apps {
     width: 400px;
-    height: 400px;
+    height: 500px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 120px);
     grid-template-rows: repeat(4, 90px);
-    gap: 10px;
+    gap: 15px;
+    margin-left: 10px;
+    position: absolute;
 }
 
-.App {
+.Desktop .Apps .App {
     display: grid;
     place-items: center;
     font-size: 14px;
 }
 
-.App img {
+.Desktop .Apps .App img {
+    display: grid;
+    place-items: center;
     max-width: 48px;
 }
 
-/* ======== MENU BAR =========== */
+.Desktop .Apps .App span {
+    text-align: center;
+    color: white;
+}
+
+/* ======== MENU SET =========== */
+
+.Windows-menu {
+    width: 400px;
+    height: 550px;
+    position: relative;
+    top: 90px;
+}
+
+.Windows-menu .Menu-top {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background: #245EDB;
+    border-radius: 0px 20px 0px 0px;
+    box-shadow: inset 0px 15px 4px -10px rgb(67, 126, 255);
+    height: 15%;
+}
+
+.Windows-menu .Menu-top .Menu-icon {
+    width: 70px;
+    height: 70px;
+    margin-left: 15px;
+    border: 3px solid grey;
+    border-radius: 15px;
+}
+
+.Windows-menu .Menu-top .Menu-username {
+    margin-left: 15px;
+    font-size: 25px;
+    color: white;
+}
+
+.Windows-menu .Menu-middle {
+    display: flex;
+    background: white;
+    height: 73%;
+}
+
+.Windows-menu .Menu-middle .Left-side {
+   display: flex;
+   flex-direction: column;
+   width: 45%;
+   height: 100%;
+   border: 2px solid red;
+}
+
+.Windows-menu .Menu-middle .Left-side .Left-session {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid red;
+ }
+
+ .Windows-menu .Menu-middle .Left-side .Left-session.one {
+    height: 80%;
+ }
+
+ .Windows-menu .Menu-middle .Left-side .Left-session.two {
+    height: 20%;
+ }
+
+
+.Windows-menu .Menu-middle .Left-side .Left.app.container {
+    flex: 1;
+    border: 2px solid black;
+ }
+
+.Windows-menu .Menu-middle .Right-side {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: 100%;
+    border-left: 1px solid grey;
+}
+
+.Windows-menu .Menu-middle .Right-side .Right-session {
+    flex-direction: column;
+    display: flex;
+    border: 2px solid black;
+}
+
+.Windows-menu .Menu-middle .Right-side .Right-session.one  {
+    border: 2px solid red;
+    height: 45%;
+}
+
+.Windows-menu .Menu-middle .Right-side .Right-session.two  {
+    border: 2px solid red;
+    height: 28%;
+}
+
+.Windows-menu .Menu-middle .Right-side .Right-session.three  {
+    border: 2px solid red;
+    height: 28%;
+}
+
+.Windows-menu .Menu-middle .Right-side .Right.app.container {
+    border: 2px solid black;
+    flex: 1;
+}
+
+.Windows-menu .Menu-bottom {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background: #245EDB;
+    height: 13%;
+}
+
+.Windows-menu .Menu-bottom .Menu-buttons {
+    border: 2px solid black;
+    display: flex;
+    height: 80%;
+    width: 250px;
+    margin-right: 10px;
+}
+
+.Windows-menu .Menu-bottom .Menu-buttons .Button.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+
+.Windows-menu .Menu-bottom .Menu-buttons button {
+    width: 40px;
+    height: 40px;
+}
+
+.Windows-menu .Menu-bottom .Menu-buttons .Log-off {
+    background: red;
+    flex: 1;
+}
+
+.Windows-menu .Menu-bottom .Menu-buttons .Turn-off {
+    background: yellow;
+    flex: 1.2;
+}
+/* ======== WINDOWS BAR =========== */
 
 .Windows.bar {
     display: flex;
     justify-content: end;
     width: 100vw;
-    height: 55px;
-    background: blue;
+    height: 50px;
+    background: #245EDB;
+    box-shadow: inset 0px 15px 4px -10px #6092ff;
     position: relative;
 }
 
@@ -56,15 +207,18 @@
     left: -25px;
     width: 150px;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 20px;
     border: none;
     background: green;
+    box-shadow: inset 0px 15px 4px -10px rgb(58, 189, 58);
 }
 
 .Windows.bar .Button.inner.content {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
+    width: 200px;
     margin-left: 10px;
 }
 
@@ -74,7 +228,8 @@
 }
 
 .Windows.bar .Button.inner.content span {
-    font-size: 22px;
+    font-size: 28px;
+    font-style: italic;
     color: white;
     text-shadow: 2px 2px black;
 }
@@ -86,5 +241,6 @@
     width: 150px;
     height: 100%;
     background: rgb(0, 89, 255);
+    box-shadow: inset 0px 15px 4px -10px rgb(58, 127, 255);
     color: white;
 } 
