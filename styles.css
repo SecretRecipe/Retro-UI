@@ -6,7 +6,7 @@
 
 .Desktop {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: space-between;
     width: 100vw;
     height: 100vh;
@@ -14,8 +14,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: Tahoma, sans-serif;
-    text-shadow: 1px 1px black;
 }
 
 /* ======== DESKTOP APPS =========== */
@@ -24,11 +22,13 @@
     width: 400px;
     height: 500px;
     display: grid;
-    grid-template-columns: repeat(3, 120px);
-    grid-template-rows: repeat(4, 90px);
+    grid-template-columns: repeat(2, 120px);
+    grid-template-rows: repeat(4, 85px);
     gap: 15px;
     margin-left: 10px;
     position: absolute;
+    font-family: Tahoma, sans-serif;
+    text-shadow: 1px 1px black;
 }
 
 .Desktop .Apps .App {
@@ -53,26 +53,33 @@
 .Windows-menu {
     width: 400px;
     height: 550px;
-    position: relative;
+    position: absolute;
     top: 90px;
+    font-family: Tahoma, sans-serif;
 }
 
 .Windows-menu .Menu-top {
     display: flex;
     justify-content: start;
     align-items: center;
-    background: #245EDB;
-    border-radius: 0px 20px 0px 0px;
-    box-shadow: inset 0px 15px 4px -10px rgb(67, 126, 255);
     height: 15%;
+    border-radius: 0px 20px 0px 0px;
+    background: linear-gradient(#095BC8, #3C95EA);
+    box-shadow: inset 0px 15px 4px -10px rgb(138, 175, 255);
 }
 
 .Windows-menu .Menu-top .Menu-icon {
-    width: 70px;
-    height: 70px;
+    max-width: 60px;
+    max-height: 60px;
+    overflow: hidden;
     margin-left: 15px;
-    border: 3px solid grey;
+    border: 3px solid rgb(221, 221, 221);
     border-radius: 15px;
+}
+
+.Windows-menu .Menu-top .Menu-icon img {
+    width: 100%;
+    height: 100%;
 }
 
 .Windows-menu .Menu-top .Menu-username {
@@ -92,27 +99,62 @@
    flex-direction: column;
    width: 45%;
    height: 100%;
-   border: 2px solid red;
 }
+
+.Windows-menu .Menu-middle .Left-side img {
+    width: 42px;
+    height: 42px;
+ }
 
 .Windows-menu .Menu-middle .Left-side .Left-session {
     display: flex;
     flex-direction: column;
-    border: 2px solid red;
  }
 
  .Windows-menu .Menu-middle .Left-side .Left-session.one {
     height: 80%;
  }
 
- .Windows-menu .Menu-middle .Left-side .Left-session.two {
-    height: 20%;
+ .Windows-menu .Menu-middle .Left-side .Left.app.container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 4px;
+    padding: 3px;
+    font-size: 12.5px;
+    font-weight: lighter;
  }
 
+ .Windows-menu .Menu-middle .Left-side .Left-session.two {
+    display: flex;
+    align-items: center;
+    height: 20%;
+    border-top: 1px solid grey;
+ }
 
-.Windows-menu .Menu-middle .Left-side .Left.app.container {
-    flex: 1;
-    border: 2px solid black;
+ .Windows-menu .Menu-middle .Left-side .Left-session.two .All.program.session {
+    display: grid;
+    place-items: center;
+    margin-top: 15px;
+    width: 100%;
+ }
+
+ .Windows-menu .Menu-middle .Left-side .Left-session.two  button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 50px;
+    width: 150px;
+    font-size: 13px;
+    font-weight: 500;
+    background: white;
+    border: none;
+ }
+
+ .Windows-menu .Menu-middle .Left-side .Left-session.two img {
+    width: 18px;
+    height: 18px;
  }
 
 .Windows-menu .Menu-middle .Right-side {
@@ -121,32 +163,40 @@
     width: 55%;
     height: 100%;
     border-left: 1px solid grey;
+    background: #D7E7F8;
 }
 
 .Windows-menu .Menu-middle .Right-side .Right-session {
     flex-direction: column;
-    display: flex;
-    border: 2px solid black;
+    font-size: 12.5px;
 }
 
 .Windows-menu .Menu-middle .Right-side .Right-session.one  {
-    border: 2px solid red;
-    height: 45%;
+    height: 40%;
+    font-weight: bolder;
 }
 
 .Windows-menu .Menu-middle .Right-side .Right-session.two  {
-    border: 2px solid red;
-    height: 28%;
+    height: 30%;
+    border-top: 1px solid grey;
 }
 
 .Windows-menu .Menu-middle .Right-side .Right-session.three  {
-    border: 2px solid red;
     height: 28%;
+    border-top: 1px solid grey;
 }
 
 .Windows-menu .Menu-middle .Right-side .Right.app.container {
-    border: 2px solid black;
-    flex: 1;
+    height: 37.5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.Windows-menu .Menu-middle .Right-side .Right.app.container img {
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
 }
 
 .Windows-menu .Menu-bottom {
@@ -155,10 +205,10 @@
     align-items: center;
     background: #245EDB;
     height: 13%;
+    color: white;
 }
 
 .Windows-menu .Menu-bottom .Menu-buttons {
-    border: 2px solid black;
     display: flex;
     height: 80%;
     width: 250px;
@@ -172,31 +222,39 @@
     gap: 5px;
 }
 
-
 .Windows-menu .Menu-bottom .Menu-buttons button {
-    width: 40px;
+    display: flex;
+    max-width: 40px;
     height: 40px;
 }
 
+.Windows-menu .Menu-bottom .Menu-buttons button img {
+    max-width: 40px;
+    max-height: 40px;
+    object-fit: cover;
+}
+
 .Windows-menu .Menu-bottom .Menu-buttons .Log-off {
-    background: red;
     flex: 1;
 }
 
 .Windows-menu .Menu-bottom .Menu-buttons .Turn-off {
-    background: yellow;
     flex: 1.2;
 }
+
 /* ======== WINDOWS BAR =========== */
 
 .Windows.bar {
     display: flex;
     justify-content: end;
+    position: absolute;
+    bottom: -1px;
     width: 100vw;
     height: 50px;
     background: #245EDB;
     box-shadow: inset 0px 15px 4px -10px #6092ff;
-    position: relative;
+    font-family: Tahoma, sans-serif;
+    text-shadow: 1px 1px black;
 }
 
 .Windows.bar button {
@@ -244,3 +302,14 @@
     box-shadow: inset 0px 15px 4px -10px rgb(58, 127, 255);
     color: white;
 } 
+
+/* FLOATING WINDOWS */
+
+.Desktop #Paint-window {
+    margin-left: 500px;
+    margin-top: 10px;
+    width: 600px;
+    height: 600px;
+    position: relative;
+    border: 2px solid blue;
+}

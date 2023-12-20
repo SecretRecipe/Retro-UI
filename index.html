@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RETRO UI</title>
     <link rel = "stylesheet" href = "styles.css">
+    <script src = "script.js"></script>
 </head>
 <body>
 
@@ -70,11 +71,11 @@
                 <span> Github </span>
             </div>
         </div>
-
+        
         <div class = "Windows-menu">
 
             <div class = "Menu-top">
-                <div class = "Menu-icon"></div>
+                <div class = "Menu-icon"><img src = "images/menu-icon.jpg"></div>
                 <div class = "Menu-username">
                     <span> Murilo </span>
                 </div>
@@ -83,54 +84,109 @@
             <div class = "Menu-middle">
                 <div class = "Left-side">
                     <div class = "Left-session one">
-                        <div class = "Left app container"></div>
-                        <div class = "Left app container"></div>
-                        <div class = "Left app container"></div>
-                        <div class = "Left app container"></div>
-                        <div class = "Left app container"></div>
-                        <div class = "Left app container"></div>
+                        <div class = "Left app container">
+                            <img src = "images/desktop/Internet Explorer 6.png">
+                            <div class = "App-title">
+                                <h4> Internet</h4>
+                                <span> Internet Explorer</span>
+                            </div>
+                        </div>
+                        <div class = "Left app container">
+                            <img src = "images/desktop/Email.png">
+                            <div class = "App-title">
+                                <h4> E-mail </h4>
+                                <span> E-mail </span>
+                            </div>
+                        </div>
+                        <div class = "Left app container">
+                            <img src = "images/desktop/MSN Messenger.png">
+                            <span> MSN Messenger </span>
+                        </div>
+                        <div id = 'Paint' class = "Left app container">
+                            <img src = "images/desktop/Paint.png">
+                            <span> Paint </span>
+                        </div>
+                        <div class = "Left app container">
+                            <img src = "images/desktop/Windows Media Player 10.png">
+                            <span> Microsoft Media Player </span>
+                        </div>
+                        <div class = "Left app container">
+                            <img src = "images/desktop/Notepad.png">
+                            <span> Notepad </span>
+                        </div> 
                     </div>
                     <div class = "Left-session two">
-                        <div class = "Left app container"></div>
+                        <div class = "All program session">
+                            <button> All Programs <img src = "images/desktop/play.ico"></button>
+                        </div>
                     </div>
                 </div>
                 <div class = "Right-side">
                     <div class = "Right-session one">
-                        <div class = "Right app container"></div>
-                        <div class = "Right app container"></div>
-                        <div class = "Right app container"></div>
-                        <div class = "Right app container"></div>
-                        <div class = "Right app container"></div>
+                        <div class = "Right app container">
+                            <img src = "images/desktop/My Documents.png">
+                            <span> My Documents </span>
+                        </div>
+                        <div class = "Right app container">
+                            <img src = "images/desktop/My Pictures.png">
+                            <span> My Pictures </span>
+                        </div>
+                        <div class = "Right app container">
+                            <img src = "images/desktop/My Music.png">
+                            <span> My Music </span>
+                        </div>
+                        <div class = "Right app container">
+                            <img src = "images/desktop/My Computer.png">
+                            <span> My Computer </span>
+                        </div>
                     </div>
                     <div class = "Right-session two">
-                        <div class = "Right app container"></div>
-                        <div class = "Right app container"></div>
-                        <div class = "Right app container"></div>
+                        <div class = "Right app container">
+                            <img src = "images/desktop/Control Panel.png">
+                            <span> Control Panel </span>
+                        </div>
+                        <div class = "Right app container">
+                            <img src = "images/desktop/My Network Places.png">
+                            <span> Connect to... </span>
+                        </div>
+                        <div class = "Right app container">
+                            <img src = "images/desktop/Printers and Faxes.png">
+                            <span> Printers and Faxers </span>
+                        </div>
                     </div>
-                    <div class = "Right-session two">
-                        <div class = "Right app container"></div>
-                        <div class = "Right app container"></div>
-                        <div class = "Right app container"></div>
+                    <div class = "Right-session three">
+                        <div class = "Right app container">
+                            <img src = "images/desktop/Help and Support.png">
+                            <span> Help and Support </span>
+                        </div>
+                        <div class = "Right app container">
+                            <img src = "images/desktop/Search.png">
+                            <span> Search </span>
+                        </div>
+                        <div class = "Right app container">
+                            <img src = "images/desktop/Run.png">
+                            <span> Run </span>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class = "Menu-bottom">
                 <div class = "Menu-buttons">
                     <div class = "Button container Log-off ">
-                        <button></button>
+                        <button><img src = "images/desktop/Logout.png"></button>
                         <span> Log off </span>
                     </div>
                     <div class = "Button container Turn-off">
-                        <button></button>
+                        <button><img src = "images/desktop/Power.png"></button>
                         <span> Turn off </span>
                     </div>
                 </div>
             </div>
         </div>
-
+        
         <div class = "Windows bar">
 
-            <button> 
+            <button id = "Windows-button"> 
                 <div class = "Button inner content">
                     <img src = "images/main/windows-logo.png"> 
                     <span> Start </span>
@@ -141,6 +197,8 @@
                 <span> 10: 44 </span>
             </div>
         </div>
+
+        <iframe id = 'Paint-window' src = "pages/paint/paint.html" scrolling = 'no'>  
 
     </div>
 </body>

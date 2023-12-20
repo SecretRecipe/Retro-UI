@@ -1,0 +1,44 @@
+* {
+    box-sizing: 'border-box';
+    padding: 0;
+    margin: 0;
+}
+
+.Paint-container {
+    width: 600px;
+    height: 600px;
+    font-family: Tahoma, sans-serif;
+}
+
+.Paint-container .Paint-top-UI {
+    height: 6%;
+    background: linear-gradient(#245EDB ,#0059ED);
+    box-shadow: inset 0px 15px 4px -10px #6092ff;
+}
+
+
+.Paint-container .Paint-top-UI .File-title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 5px;
+    width: 200px;
+    height: 100%;
+    color: white;
+}
+
+.Paint-container .Paint-top-UI .File-title  img{
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.Paint-container .Paint-top-UI .File-title span {
+    display: flex;
+}
+
+.Paint-container .Paint-top-UI .Windows-buttons {
+    border: 2px solid black;
+    width: 200px;
+    height: 100%;
+}
+
