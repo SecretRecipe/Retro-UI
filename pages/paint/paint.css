@@ -46,7 +46,7 @@
 .Paint-container .Header-menu {
     display: flex;
     align-items: center;
-    height: 1.8rem;
+    height: 3%;
     background: #E5E2D1;
     border-bottom: 1px solid grey;
 }
@@ -71,13 +71,14 @@
     grid-template-rows: repeat(16, 30px);
     justify-content: center;
     margin-top: 15px;
-    width: 5%;
+    width: 10%;
     padding: 5px;
     height: 100%;
     background: #E5E2D1;
 }
 
 .Paint-container .Center .Left-tools .tool {
+    border: none;
 }
 
 .Paint-container .Center .Left-tools .tool button {
@@ -111,7 +112,8 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: 60px;
+    height: 17%;
+    margin-bottom: 10px;
     background: #E5E2D1;
 }
 
@@ -121,27 +123,46 @@
     gap: 10px;
     width: 380px;
     height: 50px;
-    margin-left: 5px;
-    background: #E5E2D1;
+    margin-left: 65px;
+    margin-bottom: 35px;
 }
 
 .Paint-container .Bottom .Selectioned-color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 2px solid black;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     margin-left: 5px;
+    margin-top: 10px;
+}
+
+.Paint-container .Bottom .Selectioned-color #Selectioned-1 {
+    border: 2px solid black;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+}
+
+.Paint-container .Bottom .Selectioned-color #Selectioned-2 {
+    border: 2px solid black;
+    width: 20px;
+    height: 20px;
 }
 
 .Paint-container .Bottom .Color-panel .Available-colors {
     display: grid;
     grid-template-columns: repeat(14, 20px);
     grid-template-rows: repeat(2, 20px);
-    gap: 2px;
+    gap: 5px;
     width: 140px;
     height: 40px;
-    background: white;
 }
 
 .Paint-container .Bottom .Color-panel .Available-colors .color {
-    border: 2px solid black;
+    border: none;
+    box-shadow: inset 1px 2px black;
 }
