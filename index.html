@@ -1,217 +1,432 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RETRO UI</title>
-    <link rel = "stylesheet" href = "styles.css">
-    <script src = "script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="script.js"></script>
 </head>
+
 <body>
 
-    <div class = "Desktop">
+    <div class="Desktop">
 
-        <div class = "Apps">
+        <div class="Apps">
 
-            <div class = "App one">
-                <img src = "images/desktop/My Computer.png">
+            <div class="App one">
+                <img src="images/desktop/My Computer.png">
                 <span> My Computer </span>
             </div>
 
-            <div class = "App two">
-                <img src = "images/desktop/Internet Explorer 6.png">
+            <div class="App two">
+                <img src="images/desktop/Internet Explorer 6.png">
                 <span> Internet Explorer </span>
             </div>
 
-            <div class = "App three">
-                <img src = "images/desktop/My Network Places.png">
+            <div class="App three">
+                <img src="images/desktop/My Network Places.png">
                 <span> My Network </span>
             </div>
-        
-            <div class = "App four">
-                <img src = "images/desktop/Calculator.png">
+
+            <div class="App four">
+                <img src="images/desktop/Calculator.png">
                 <span> Calculator </span>
             </div>
-            
-            <div class = "App five">
-                <img src = "images/desktop/Display Adaptor.png">
+
+            <div class="App five">
+                <img src="images/desktop/Display Adaptor.png">
                 <span> Display Adaptor </span>
             </div>
-            
-            <div class = "App six">
-                <img src = "images/desktop/GTA.png">
+
+            <div class="App six">
+                <img src="images/desktop/GTA.png">
                 <span> GTA </span>
             </div>
 
-            <div class = "App eight">
-                <img src = "images/desktop/Game Controller.png">
+            <div class="App eight">
+                <img src="images/desktop/Game Controller.png">
                 <span> Game Controller </span>
             </div>
 
-            <div class = "App nine">
-                <img src = "images/desktop/Windows Media Player 10.png">
+            <div class="App nine">
+                <img src="images/desktop/Windows Media Player 10.png">
                 <span> Media Player </span>
             </div>
-            <div class = "App ten">
-                <img src = "images/desktop/MSN Messenger.png">
+            <div class="App ten">
+                <img src="images/desktop/MSN Messenger.png">
                 <span> MSN Messenger </span>
             </div>
 
-            <div class = "App eleven">
-                <img src = "images/desktop/Sims.png">
+            <div class="App eleven">
+                <img src="images/desktop/Sims.png">
                 <span> The Sims 2 </span>
             </div>
-            <div class = "App twelve">
-                <img src = "images/desktop/Plants Vs Zombies.png">
+            <div class="App twelve">
+                <img src="images/desktop/Plants Vs Zombies.png">
                 <span> Plants VS Zombies </span>
             </div>
 
-            <div class = "App thirteen">
-                <img src = "images/desktop/git.png">
+            <div class="App thirteen">
+                <img src="images/desktop/git.png">
                 <span> Github </span>
             </div>
         </div>
-        
-        <div class = "Windows-menu">
 
-            <div class = "Menu-top">
-                <div class = "Menu-icon"><img src = "images/menu-icon.jpg"></div>
-                <div class = "Menu-username">
-                    <span> Murilo </span>
+
+
+        <div class="Windows bar">
+
+            <div class="Windows-menu" id = "Windows-menu">
+
+                <div class="Menu-top">
+                    <div class="Menu-icon"><img src="images/menu-icon.jpg"></div>
+                    <div class="Menu-username">
+                        <span> Murilo </span>
+                    </div>
                 </div>
-            </div>
 
-            <div class = "Menu-middle">
-                <div class = "Left-side">
-                    <div class = "Left-session one">
-                        <div class = "Left app container">
-                            <img src = "images/desktop/Internet Explorer 6.png">
-                            <div class = "App-title">
-                                <h4> Internet</h4>
-                                <span> Internet Explorer</span>
+                <div class="Menu-middle">
+                    <div class="Left-side">
+                        <div class="Left-session one">
+                            <div class="Left app container" id = 'Internet-explorer'>
+                                <img src="images/desktop/Internet Explorer 6.png">
+                                <div class="App-title">
+                                    <h4> Internet</h4>
+                                    <span> Internet Explorer</span>
+                                </div>
+                            </div>
+                            <div class="Left app container">
+                                <img src="images/desktop/Email.png">
+                                <div class="App-title">
+                                    <h4> E-mail </h4>
+                                    <span> E-mail </span>
+                                </div>
+                            </div>
+                            <div class="Left app container">
+                                <img src="images/desktop/MSN Messenger.png">
+                                <span> MSN Messenger </span>
+                            </div>
+                            <div id='Paint' class="Left app container">
+                                <img src="images/desktop/Paint.png">
+                                <span> Paint </span>
+                            </div>
+                            <div class="Left app container">
+                                <img src="images/desktop/Windows Media Player 10.png">
+                                <span> Microsoft Media Player </span>
+                            </div>
+                            <div class="Left app container">
+                                <img src="images/desktop/Notepad.png">
+                                <span> Notepad </span>
                             </div>
                         </div>
-                        <div class = "Left app container">
-                            <img src = "images/desktop/Email.png">
-                            <div class = "App-title">
-                                <h4> E-mail </h4>
-                                <span> E-mail </span>
+                        <div class="Left-session two">
+                            <div class="All program session">
+                                <button> All Programs <img src="images/desktop/play.ico"></button>
                             </div>
                         </div>
-                        <div class = "Left app container">
-                            <img src = "images/desktop/MSN Messenger.png">
-                            <span> MSN Messenger </span>
-                        </div>
-                        <div id = 'Paint' class = "Left app container">
-                            <img src = "images/desktop/Paint.png">
-                            <span> Paint </span>
-                        </div>
-                        <div class = "Left app container">
-                            <img src = "images/desktop/Windows Media Player 10.png">
-                            <span> Microsoft Media Player </span>
-                        </div>
-                        <div class = "Left app container">
-                            <img src = "images/desktop/Notepad.png">
-                            <span> Notepad </span>
-                        </div> 
                     </div>
-                    <div class = "Left-session two">
-                        <div class = "All program session">
-                            <button> All Programs <img src = "images/desktop/play.ico"></button>
+                    <div class="Right-side">
+                        <div class="Right-session one">
+                            <div class="Right app container">
+                                <img src="images/desktop/My Documents.png">
+                                <span> My Documents </span>
+                            </div>
+                            <div class="Right app container">
+                                <img src="images/desktop/My Pictures.png">
+                                <span> My Pictures </span>
+                            </div>
+                            <div class="Right app container">
+                                <img src="images/desktop/My Music.png">
+                                <span> My Music </span>
+                            </div>
+                            <div class="Right app container">
+                                <img src="images/desktop/My Computer.png">
+                                <span> My Computer </span>
+                            </div>
+                        </div>
+                        <div class="Right-session two">
+                            <div class="Right app container">
+                                <img src="images/desktop/Control Panel.png">
+                                <span> Control Panel </span>
+                            </div>
+                            <div class="Right app container">
+                                <img src="images/desktop/My Network Places.png">
+                                <span> Connect to... </span>
+                            </div>
+                            <div class="Right app container">
+                                <img src="images/desktop/Printers and Faxes.png">
+                                <span> Printers and Faxers </span>
+                            </div>
+                        </div>
+                        <div class="Right-session three">
+                            <div class="Right app container">
+                                <img src="images/desktop/Help and Support.png">
+                                <span> Help and Support </span>
+                            </div>
+                            <div class="Right app container">
+                                <img src="images/desktop/Search.png">
+                                <span> Search </span>
+                            </div>
+                            <div class="Right app container">
+                                <img src="images/desktop/Run.png">
+                                <span> Run </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class = "Right-side">
-                    <div class = "Right-session one">
-                        <div class = "Right app container">
-                            <img src = "images/desktop/My Documents.png">
-                            <span> My Documents </span>
+                <div class="Menu-bottom">
+                    <div class="Menu-buttons">
+                        <div class="Button container Log-off ">
+                            <button><img src="images/desktop/Logout.png"></button>
+                            <span> Log off </span>
                         </div>
-                        <div class = "Right app container">
-                            <img src = "images/desktop/My Pictures.png">
-                            <span> My Pictures </span>
-                        </div>
-                        <div class = "Right app container">
-                            <img src = "images/desktop/My Music.png">
-                            <span> My Music </span>
-                        </div>
-                        <div class = "Right app container">
-                            <img src = "images/desktop/My Computer.png">
-                            <span> My Computer </span>
-                        </div>
-                    </div>
-                    <div class = "Right-session two">
-                        <div class = "Right app container">
-                            <img src = "images/desktop/Control Panel.png">
-                            <span> Control Panel </span>
-                        </div>
-                        <div class = "Right app container">
-                            <img src = "images/desktop/My Network Places.png">
-                            <span> Connect to... </span>
-                        </div>
-                        <div class = "Right app container">
-                            <img src = "images/desktop/Printers and Faxes.png">
-                            <span> Printers and Faxers </span>
-                        </div>
-                    </div>
-                    <div class = "Right-session three">
-                        <div class = "Right app container">
-                            <img src = "images/desktop/Help and Support.png">
-                            <span> Help and Support </span>
-                        </div>
-                        <div class = "Right app container">
-                            <img src = "images/desktop/Search.png">
-                            <span> Search </span>
-                        </div>
-                        <div class = "Right app container">
-                            <img src = "images/desktop/Run.png">
-                            <span> Run </span>
+                        <div class="Button container Turn-off">
+                            <button><img src="images/desktop/Power.png"></button>
+                            <span> Turn off </span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class = "Menu-bottom">
-                <div class = "Menu-buttons">
-                    <div class = "Button container Log-off ">
-                        <button><img src = "images/desktop/Logout.png"></button>
-                        <span> Log off </span>
-                    </div>
-                    <div class = "Button container Turn-off">
-                        <button><img src = "images/desktop/Power.png"></button>
-                        <span> Turn off </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class = "Windows bar">
 
-            <button id = "Windows-button"> 
-                <div class = "Button inner content">
-                    <img src = "images/main/windows-logo.png"> 
+            <div class = "App-bar"></div>
+            <div class = "App-bar"></div>
+            <div class = "App-bar"></div>
+            <div class = "App-bar"></div>
+            <div class = "App-bar"></div>
+            <div class = "App-bar"></div>
+            <div class = "App-bar"></div>
+            <div class = "App-bar"></div>
+            <div class = "App-bar"></div>
+
+            <button id="Windows-button">
+                <div class="Button inner content">
+                    <img src="images/main/windows-logo.png">
                     <span> Start </span>
                 </div>
             </button>
 
-            <div class = "Time container">
+
+            <div class="Time container">
                 <span> 10: 44 </span>
             </div>
         </div>
 
-        <div id = 'Paint-window'>  
-            <div id = 'Paint-header'>
-                <div class = 'File-title'>
-                    <img src = "../../images/desktop/Paint.png">
+  
+
+        <div id='Paint-window'>
+
+            <div id='Paint-header'>
+                <div class='File-title'>
+                    <img src="../../images/desktop/Paint.png">
                     <span> Untitled - Paint </span>
                 </div>
-                <div class = 'Window-buttons'>
-                    <button></button>
-                    <button></button>
-                    <button></button>
+                <div class='Window-buttons'>
+                    <button id = 'Minimize-window'>-</button>
+                    <button id = 'Full-window'>a</button>
+                    <button id = 'Close-window'>x</button>
                 </div>
             </div>
-            <iframe src = "pages/paint/paint.html" scrolling = 'no'></iframe>
+
+            <div class='Paint-container'>
+                <div class="Header-menu">
+                    <ul>
+                        <li>File</li>
+                        <li>Edit</li>
+                        <li>View</li>
+                        <li>Image</li>
+                        <li>Colors</li>
+                        <li>Help</li>
+                    </ul>
+                </div>
+
+                <div class="Center">
+                    <div class="Left-tools">
+                        <div class="tool 1">
+                            <button><img src="/images/paint/star.png"></button>
+                        </div>
+                        <div class="tool 2">
+                            <button><img src="/images/paint/dotted-square.png"></button>
+                        </div>
+                        <div class="tool 3">
+                            <button><img src="/images/paint/eraser.png"></button>
+                        </div>
+                        <div class="tool 4">
+                            <button><img src="/images/paint/bucket.png"></bbutton>
+                        </div>
+                        <div class="tool 5">
+                            <button><img src="/images/paint/color-picker.png"></button>
+                        </div>
+                        <div class="tool 6">
+                            <button><img src="/images/paint/search.png"></button>
+                        </div>
+                        <div class="tool 7">
+                            <button><img src="/images/paint/pencil.png"></button>
+                        </div>
+                        <div class="tool 8">
+                            <button><img src="/images/paint/brush.png"></button>
+                        </div>
+                        <div class="tool 9">
+                            <button><img src="/images/paint/spray.png"></button>
+                        </div>
+                        <div class="tool 10">
+                            <button><img src="/images/paint/font.png"></button>
+                        </div>
+                        <div class="tool 11">
+                            <button><img src="/images/paint/straight-line.png"></button>
+                        </div>
+                        <div class="tool 12">
+                            <button><img src="/images/paint/curved-line.png"></button>
+                        </div>
+                        <div class="tool 13">
+                            <button><img src="/images/paint/square.png"></button>
+                        </div>
+                        <div class="tool 14">
+                            <button><img src="/images/paint/l-format.png"></button>
+                        </div>
+                        <div class="tool 15">
+                            <button><img src="/images/paint/oval.png"></button>
+                        </div>
+                        <div class="tool 16">
+                            <button><img src="/images/paint/round-circle.png"></button>
+                        </div>
+                        <div class="Panel-for-tools"></div>
+                    </div>
+                    <div class="Canvas" id = "Canvas">
+
+                    </div>
+                </div>
+                <div class="Bottom">
+                    <div class="Color-panel">
+                        <div class="Selectioned-color">
+                            <div id="Selectioned-1"></div>
+                            <div id="Selectioned-2"></div>
+                        </div>
+                        <div class="Available-colors">
+                            <div class="color 1" style='background: black;'></div>
+                            <div class="color 2" style='background: grey;'></div>
+                            <div class="color 3" style='background: darkred;'></div>
+                            <div class="color 4" style='background: darkgoldenrod;'></div>
+                            <div class="color 5" style='background: darkgreen;'></div>
+                            <div class="color 6" style='background: darkcyan;'></div>
+                            <div class="color 7" style='background: darkblue;'></div>
+                            <div class="color 8" style='background: purple;'></div>
+                            <div class="color 9" style='background: moccasin;'></div>
+                            <div class="color 10" style='background: darkslategrey;'></div>
+                            <div class="color 11" style='background: blue;'></div>
+                            <div class="color 12" style='background: steelblue;'></div>
+                            <div class="color 13" style='background: violet;'></div>
+                            <div class="color 14" style='background: maroon;'></div>
+                            <div class="color 15" style='background: white;'></div>
+                            <div class="color 16" style='background: lightgray;'></div>
+                            <div class="color 17" style='background: red;'></div>
+                            <div class="color 18" style='background: yellow;'></div>
+                            <div class="color 19" style='background: greenyellow;'></div>
+                            <div class="color 20" style='background: cyan;'></div>
+                            <div class="color 21" style='background: blue;'></div>
+                            <div class="color 22" style='background: magenta;'></div>
+                            <div class="color 23" style='background: yellow;'></div>
+                            <div class="color 24" style='background: greenyellow;'></div>
+                            <div class="color 25" style='background: lightblue;'></div>
+                            <div class="color 26" style='background: palevioletred;'></div>
+                            <div class="color 27" style='background: pink;'></div>
+                            <div class="color 28" style='background: orange;'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <div id='Internet-window'>
+            <div id='Internet-header'>
+                <div class='File-title'>
+                    <img src="./images/desktop/Internet Explorer 6.png">
+                    <span> Internet Explorer </span>
+                </div>
+                <div class='Window-buttons'>
+                    <button id = 'Minimize-window'>-</button>
+                    <button id = 'Full-window'>a</button>
+                    <button id = 'Close-window'>x</button>
+                </div>
+            </div>
+            <div class = "Internet Container">
+                <div class="Header-menu">
+                    <ul>
+                        <li>File</li>
+                        <li>Edit</li>
+                        <li>View</li>
+                        <li>Favorites</li>
+                        <li>Tools</li>
+                        <li>Help</li>
+                    </ul>
+                </div>
+                <div class = "Panel two">
+                    <div class = "Session one">
+                        <nav>
+                            <button><img src = "/images/desktop/Back.png"></button>
+                            <span> Back <box-icon type='solid' name='down-arrow'></box-icon></span>
+                            <div><i class='bx bxs-down-arrow'></i></div>
+                        </nav>
+                        <nav>
+                            <button><img src = "/images/desktop/Back.png"></button>
+                            <div><i class='bx bxs-down-arrow'></i></div>
+                        </nav>
+                        <box-icon type='solid' name='down-arrow'></box-icon>
+                        <button><img src = "images/desktop/IE Stop.png"></button>
+                        <button><IMG SRC = "images/desktop/IE Refresh.png"></button>
+                        <button><img src = "images/desktop/IE Home.png"></button>
+                    </div>
+                    <div class = "Session two">
+                        <nav>
+                            <button><img src = "/images/desktop/Search.png"></button>
+                            <span> Search</span>
+                        </nav>
+                        <nav>
+                            <button><img src = "/images/desktop/Favorites.png"></button>
+                            <span> Favorites</span>
+                        </nav>
+                        <nav>
+                            <button><img src = "/images/desktop/IE Media.png"></button>
+                            <span> Media </span>
+                        </nav>
+                        <button> <img src = "images/desktop/IE History.png"> </button>
+                    </div>
+                    <div class = "Session three">
+                        <button><img src = "images/desktop/Email.png"></button>
+                        <button><img src = "images/desktop/Printer.png"></button>
+                        <button><img src = "images/desktop/IE Edit.png"></button>
+                    </div>
+                </div>
+                <div class = "Panel three">
+                    <div class = "Search-box">
+                        <label for = 'search'>Search</label>
+                        <input type = 'text' name = 'search' id = 'search-box'>
+                        <div id = 'Little-arrow'><button><i class='bx bx-chevron-down'></i></button></div>
+                    </div>
+                    <nav>
+                        <button><img src ="images/desktop/Go.png"></button>
+                        <span>Go</span>
+                    </nav>
+                    <nav>
+                        <span>Links</span>
+                        <div><i class='bx bxs-down-arrow'></i></div>
+                    </nav>
+                </div>
+                <div class = "Main Panel">
+    
+                </div>
+                <div class = "Panel Bottom">
+                    <nav>
+                        <button><img src = "images/desktop/Accessibility Wizard.png"></button>
+                        <span> Done </span>
+                    </nav>
+                </div>
+            </div>
+           
+        </div> 
+    </div>    
 </body>
+
 </html>
