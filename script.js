@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const windowsMenu = document.getElementById('menu')
     let openMenu = 0
     //windowsMenu.className = 'Menu Hidden'
-
+    
     windowsButton.addEventListener('click', () => {
         if (openMenu == 0) {
             windowsMenu.className = 'Menu'
@@ -55,27 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     
     let menuPrograms = Array.from(document.querySelectorAll('session'))
-    var openWindows = []
     menuPrograms.forEach((menuCell) => {
 
-        menuCell.addEventListener('click', (e) => {    
+        menuCell.addEventListener('click', () => {    
 
             createNewWindow(desktop, menuCell)
-            openWindow = document.getElementById('new-window')
-
-            openWindows.push(new WindowManager(getAttribute(openWindow, 'width'), getAttribute(openWindow, 'height')))
-
-            openWindow.firstChild.addEventListener('mouse down', function(e) {
-                let offsetY = e.clientY 
-                let offsetX = e.clientX
-                openWindow.firstChild.addEventListener('mousemove', (e) => {
-                    let newOffsetX = e.clientX - offsetX 
-                    let newOffsetY = e.clientY - offsetY
-                    openWindow.style.left = newOffsetX + 'px'
-                    openWindow.style.top = newOffsetY + 'px'
-                    
-                })
-            })
+            openWindows = document.getElementsByClassName('New Window')
+            moveWindow(openWindows)
        
         })
     })
@@ -113,9 +99,37 @@ function createNewWindow(finalLocation, cellClicked) {
     }   
 }
 
-function activateWindowDynamic(window, e) {
-    e.preventDefault()
-    return window.MousePosition(e.clientX, e.clientY)
+function moveWindow(window) {
+    console.log(window)
+    for (i=0; i < window.length; i++) {
+        (function (currentWindow) {
+            currentWindow.firstChild.addEventListener('mousedown', (e) => {
+                
+                let offsetX = e.offsetX
+                let offsetY = e.offsetY
+                console.log(offsetX, offsetY)
+                
+                currentWindow.firstChild.addEventListener('mousemove', newOffset)
+                currentWindow.firstChild.addEventListener('mouseup', removingEvents)
+                currentWindow.firstChild.addEventListener('mouseleaves', removingEvents)
+                
+                function newOffset(e) {
+                    e.preventDefault()
+                    newOffsetX = e.clientX - offsetX
+                    newOffsetY = e.clientY - offsetY
+                    currentWindow.style.left = newOffsetX + 'px'
+                    currentWindow.style.top = newOffsetY + 'px'
+                }
+
+                function removingEvents() {
+                    currentWindow.firstChild.removeEventListener('mousemove', newOffset)
+                    currentWindow.firstChild.removeEventListener('mouseup', removingEvents)
+                    currentWindow.firstChild.removeEventListener('mouseleaves', removingEvents)
+                }
+            })
+        })
+        (window[i])
+    }
 }
 
 function getAttribute(element, style) {
