@@ -7,35 +7,46 @@ document.addEventListener('DOMContentLoaded', () => {
     -> Get clicking event working over window
     */
 
+    /*
+
     class WindowManager {
 
         constructor(width, height, leftPosition, topPosition) {
             this.width = width
             this.height = height
-            this.left = leftPosition
+            this.leftPosition = leftPosition
             this.topPosition = topPosition
         }
-        /*
+        
         MousePosition(positionX, positionY) {
     
-            this.positionX = positionX
-            this.positionY = positionY
             const self = this
-    
+            self.positionX = positionX
+            self.positionY = positionY
+
             document.addEventListener('mousemove', moveWindowEvent)
-    
-    
+            document.addEventListener('mouseup', removeEvent)
+            document.addEventListener('mouseleave', removeEvent)
+
             function moveWindowEvent(e) {
                 e.preventDefault()
-                let newOffsetX = e.clientX - self.positionX
+                let newOffsetX = e.clientX - self.positionX 
                 let newOffsetY = e.clientY - self.positionY
+                console.log(newOffsetX, newOffsetY)
+                self.leftPosition = newOffsetX
+                self.topPosition = newOffsetY
+                console.log(newOffsetX, newOffsetY)
+            }
     
-                self.leftPosition = newOffsetX;
-                self.topPosition = newOffsetY;
+            function removeEvent() {
+                document.removeEventListener('mousemove', moveWindowEvent)
+                document.addEventListener('mouseup', removeEvent)
+                document.addEventListener('mouseleave', removeEvent)
+    
             }
         }
-        */
     }
+    */
 
     const desktop = document.getElementById('desktop')
     const windowsButton = document.getElementById('menu-button')
@@ -55,13 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     
     let menuPrograms = Array.from(document.querySelectorAll('session'))
+    
     menuPrograms.forEach((menuCell) => {
 
         menuCell.addEventListener('click', () => {    
 
             createNewWindow(desktop, menuCell)
-            openWindows = document.getElementsByClassName('New Window')
-            moveWindow(openWindows)
+
+            openWindows =  Array.from(document.getElementsByClassName('New Window'))
+
+            moveWindowEvent(openWindows)
        
         })
     })
@@ -99,19 +113,24 @@ function createNewWindow(finalLocation, cellClicked) {
     }   
 }
 
-function moveWindow(window) {
-    console.log(window)
+function activateWindowDynamic(window, e) {
+    e.preventDefault()
+    return window.MousePosition(e.clientX, e.clientY)
+}
+
+function moveWindowEvent(window) {
+
     for (i=0; i < window.length; i++) {
         (function (currentWindow) {
             currentWindow.firstChild.addEventListener('mousedown', (e) => {
-                
+            
                 let offsetX = e.offsetX
                 let offsetY = e.offsetY
                 console.log(offsetX, offsetY)
                 
                 currentWindow.firstChild.addEventListener('mousemove', newOffset)
                 currentWindow.firstChild.addEventListener('mouseup', removingEvents)
-                currentWindow.firstChild.addEventListener('mouseleaves', removingEvents)
+                currentWindow.firstChild.addEventListener('mouseleave', removingEvents)
                 
                 function newOffset(e) {
                     e.preventDefault()
@@ -124,8 +143,9 @@ function moveWindow(window) {
                 function removingEvents() {
                     currentWindow.firstChild.removeEventListener('mousemove', newOffset)
                     currentWindow.firstChild.removeEventListener('mouseup', removingEvents)
-                    currentWindow.firstChild.removeEventListener('mouseleaves', removingEvents)
+                    currentWindow.firstChild.removeEventListener('mouseleave', removingEvents)
                 }
+                
             })
         })
         (window[i])
