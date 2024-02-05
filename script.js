@@ -95,6 +95,7 @@ function createNewWindow(finalLocation, cellClicked) {
         windowHeader.style.background = 'lightblue'
         windowHeader.id = 'window-header'
         
+
         let windowContent = document.createElement('object')
         windowContent.style.width = '100%'
         windowContent.style.height = '100%'
