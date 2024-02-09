@@ -27,6 +27,18 @@
     border: 2px solid black;
 }
 
+.Desktop .Menu .Top {
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    padding: 2%;
+}
+.Desktop .Menu .Top .User.Icon {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+}
+
 .Desktop .Menu .Middle {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -34,15 +46,43 @@
 
 .Desktop .Menu .Middle > div {
     display: grid;
-    grid-template-rows: repeat(auto, 1fr);
+    grid-template-rows: repeat(auto-fit, 1fr);
     border: 2px solid #000000;
-    flex-direction: column;
 }
 
 .Desktop .Menu .Cell {
-    display: grid;
-    border: 2px solid red;
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    padding: 2%;
 }
+
+.Desktop .Menu .Cell img {
+    max-width: 32px;
+    max-height: 32px;
+}
+
+
+.Desktop .Menu .Footer {
+    display: flex;
+    justify-content: end;
+    padding: 2%;
+}
+
+.Desktop .Menu .Footer .Buttons {
+    display: flex;
+    gap: 25%;
+    width: 30%;
+    height: 100%;
+}
+
+.Desktop .Menu .Footer .Buttons button {
+    width: 48px;
+    height: 48px;
+}
+
+
+
 
 .Desktop .Footer.Bar {
     width: 100%;
