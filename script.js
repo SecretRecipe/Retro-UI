@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const windowsMenu = document.getElementById('menu')
     let openMenu = 0
     //windowsMenu.className = 'Menu Hidden'
-    
+
     windowsButton.addEventListener('click', () => {
         if (openMenu == 0) {
             windowsMenu.className = 'Menu'
@@ -64,21 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
             openMenu -= 1
         }
     })
-    
+
     let menuPrograms = Array.from(document.querySelectorAll('session'))
     let menuFooter = document.getElementById('footer-bar')
-    
+
     menuPrograms.forEach((menuCell) => {
 
-        menuCell.addEventListener('click', () => {    
+        menuCell.addEventListener('click', () => {
 
             createNewWindow(desktop, menuCell, menuFooter)
 
-            openWindows =  Array.from(document.getElementsByClassName('New Window'))
+            openWindows = Array.from(document.getElementsByClassName('New Window'))
 
             moveWindowEvent(openWindows)
             resizableWindowEvent(openWindows)
-       
+
         })
     })
 })
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function createNewWindow(finalLocation, cellClicked, footerBar) {
 
     if (cellClicked.className.includes('Closed')) {
-        
+
         let newWindow = document.createElement('div')
         newWindow.id = 'new-window'
         newWindow.className = 'New Window'
@@ -101,20 +101,20 @@ function createNewWindow(finalLocation, cellClicked, footerBar) {
         let fullWindow = document.createElement('button')
         fullWindow.id = 'full-window'
         buttonContainer.append(minimizeWindow, closeWindow, fullWindow)
-        
+
         let windowHeader = document.createElement('div')
         windowHeader.style.width = '100%'
         windowHeader.style.height = '10%'
         windowHeader.style.background = 'lightblue'
         windowHeader.id = 'window-header'
-        
+
         let windowContent = document.createElement('object')
         windowContent.style.width = '100%'
-        windowContent.style.height = '100%' 
-        
+        windowContent.style.height = '100%'
+
         let windowBar = document.createElement('div')
         windowBar.id = 'window-bar'
-        
+
         let textNode
 
         if (cellClicked.className.includes('Paint')) {
@@ -122,17 +122,17 @@ function createNewWindow(finalLocation, cellClicked, footerBar) {
             windowBar.append(textNode)
             windowContent.setAttribute('data', 'pages/paint/paint.html')
         }
-        
+
         footerBar.append(windowBar)
         windowHeader.append(buttonContainer)
         newWindow.append(windowHeader)
         newWindow.append(windowContent)
         finalLocation.append(newWindow)
-        
+
         newClassName = cellClicked.className.replace('Closed', 'Open')
         cellClicked.className = newClassName
-        
-    }   
+
+    }
 }
 
 function getAttribute(element, style) {
@@ -140,18 +140,18 @@ function getAttribute(element, style) {
 }
 
 function moveWindowEvent(window) {
-    for (i=0; i < window.length; i++) {
+    for (i = 0; i < window.length; i++) {
         (function (currentWindow) {
             currentWindow.firstChild.addEventListener('mousedown', (e) => {
-                
+
 
                 let offsetX = e.offsetX
                 let offsetY = e.offsetY
-                
+
                 currentWindow.firstChild.addEventListener('mousemove', newOffset)
                 currentWindow.firstChild.addEventListener('mouseup', removingEvents)
                 currentWindow.firstChild.addEventListener('mouseleave', removingEvents)
-                
+
                 function newOffset(e) {
                     e.preventDefault()
                     newOffsetX = e.clientX - offsetX
@@ -165,17 +165,17 @@ function moveWindowEvent(window) {
                     currentWindow.firstChild.removeEventListener('mouseup', removingEvents)
                     currentWindow.firstChild.removeEventListener('mouseleave', removingEvents)
                 }
-                
+
             })
         })
-        (window[i])
+            (window[i])
     }
 }
 
 function resizableWindowEvent(window) {
-    for (i=0; i < window.length; i++) {
-        (function (tackledWindow, size= 10) {
-            
+    for (i = 0; i < window.length; i++) {
+        (function (tackledWindow, size = 10) {
+
             const top = document.createElement('div')
             top.style.width = '100%';
             top.style.height = size + 'px';
@@ -195,7 +195,7 @@ function resizableWindowEvent(window) {
             bottom.style.left = '0px';
             bottom.style.cursor = 'n-resize';
             bottom.id = 'bottom'
-            
+
             const left = document.createElement('div');
             left.style.width = size + 'px';
             left.style.height = '100%';
@@ -205,7 +205,7 @@ function resizableWindowEvent(window) {
             left.style.left = - (size / 2) + 'px';
             left.style.cursor = 'e-resize';
             left.id = 'left'
-            
+
             const right = document.createElement('div');
             right.style.width = size + 'px';
             right.style.height = '100%';
@@ -225,7 +225,7 @@ function resizableWindowEvent(window) {
             corner1.style.left = - (size / 2) + 'px';
             corner1.style.cursor = 'nw-resize';
             corner1.id = 'corner-1'
-            
+
             const corner2 = document.createElement('div');
             corner2.style.width = size + 'px';
             corner2.style.height = size + 'px';
@@ -235,7 +235,7 @@ function resizableWindowEvent(window) {
             corner2.style.right = - (size / 2) + 'px';
             corner2.style.cursor = 'ne-resize';
             corner2.id = 'corner-2'
-            
+
             const corner3 = document.createElement('div');
             corner3.style.width = size + 'px';
             corner3.style.height = size + 'px';
@@ -245,7 +245,7 @@ function resizableWindowEvent(window) {
             corner3.style.left = - (size / 2) + 'px';
             corner3.style.cursor = 'sw-resize';
             corner3.id = 'corner-3'
-            
+
             const corner4 = document.createElement('div');
             corner4.style.width = size + 'px';
             corner4.style.height = size + 'px';
@@ -273,18 +273,15 @@ function resizableWindowEvent(window) {
             corner2.addEventListener('mousedown', resizeWindow);
             corner3.addEventListener('mousedown', resizeWindow);
             corner4.addEventListener('mousedown', resizeWindow);
-           
-           function resizeWindow(e) {
-               let offsetTop = tackledWindow.offsetTop
-               let offsetLeft = tackledWindow.offsetLeft
 
-               let windowsHeight = parseInt((getAttribute(tackledWindow, 'height'))) 
-               let windowsWidth = parseInt((getAttribute(tackledWindow, 'width')))
+            function resizeWindow(e) {
                 
-                
-                let offsetY = e.clientY 
+                let offsetTop = tackledWindow.offsetTop
+                let offsetLeft = tackledWindow.offsetLeft
+                let windowsHeight = parseInt((getAttribute(tackledWindow, 'height')))
+                let windowsWidth = parseInt((getAttribute(tackledWindow, 'width')))
+                let offsetY = e.clientY
                 let offsetX = e.clientX
-                                
                 let newHeight, newWidth, newOffsetTop, newOffsetLeft
 
                 let tackledBorder = document.getElementById(this.id).id
@@ -292,11 +289,11 @@ function resizableWindowEvent(window) {
                 tackledWindow.addEventListener('mousemove', startDrag)
                 tackledWindow.addEventListener('mouseup', stopDragging)
                 tackledWindow.addEventListener('mouseleave', stopDragging)
-                
+
                 function startDrag(e) {
 
                     if (tackledBorder == 'top' || tackledBorder == 'corner-1' || tackledBorder == 'corner-2') {
-                        newOffsetTop = offsetTop + (e.clientY - offsetY) 
+                        newOffsetTop = offsetTop + (e.clientY - offsetY)
                         newHeight = windowsHeight - (e.clientY - offsetY)
                     }
 
@@ -312,7 +309,7 @@ function resizableWindowEvent(window) {
                     if (tackledBorder == 'right' || tackledBorder == 'corner-2' || tackledBorder == 'corner-4') {
                         newWidth = windowsWidth - (offsetX - e.clientX)
                     }
-                
+
                     tackledWindow.style.height = newHeight + 'px'
                     tackledWindow.style.top = newOffsetTop + 'px'
                     tackledWindow.style.left = newOffsetLeft + 'px'
@@ -327,7 +324,7 @@ function resizableWindowEvent(window) {
             }
 
         }
-        (window[i]))
+            (window[i]))
     }
 }
 
