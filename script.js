@@ -189,7 +189,7 @@ function resizableWindowEvent(window) {
             const bottom = document.createElement('div');
             bottom.style.width = '100%';
             bottom.style.height = size + 'px';
-            bottom.style.backgroundColor = 'yellow';
+            bottom.style.backgroundColor = 'transparent';
             bottom.style.position = 'absolute';
             bottom.style.bottom = - (size / 2) + 'px';
             bottom.style.left = '0px';
@@ -224,6 +224,7 @@ function resizableWindowEvent(window) {
             corner1.style.top = - (size / 2) + 'px';
             corner1.style.left = - (size / 2) + 'px';
             corner1.style.cursor = 'nw-resize';
+            corner1.id = 'corner-1'
             
             const corner2 = document.createElement('div');
             corner2.style.width = size + 'px';
@@ -233,6 +234,7 @@ function resizableWindowEvent(window) {
             corner2.style.top = - (size / 2) + 'px';
             corner2.style.right = - (size / 2) + 'px';
             corner2.style.cursor = 'ne-resize';
+            corner2.id = 'corner-2'
             
             const corner3 = document.createElement('div');
             corner3.style.width = size + 'px';
@@ -242,6 +244,7 @@ function resizableWindowEvent(window) {
             corner3.style.bottom = - (size / 2) + 'px';
             corner3.style.left = - (size / 2) + 'px';
             corner3.style.cursor = 'sw-resize';
+            corner3.id = 'corner-3'
             
             const corner4 = document.createElement('div');
             corner4.style.width = size + 'px';
@@ -251,6 +254,7 @@ function resizableWindowEvent(window) {
             corner4.style.bottom = - (size / 2) + 'px';
             corner4.style.right = - (size / 2) + 'px';
             corner4.style.cursor = 'se-resize';
+            corner4.id = 'corner-4'
 
             tackledWindow.append(top)
             tackledWindow.append(bottom)
@@ -261,30 +265,26 @@ function resizableWindowEvent(window) {
             tackledWindow.appendChild(corner3);
             tackledWindow.appendChild(corner4);
 
-            /*
-            corner1.addEventListener('mousedown', resizeDiagonal_one);
-            corner2.addEventListener('mousedown', resizeDiagonal_two);
-            corner3.addEventListener('mousedown', resizeDiagonal_three);
-            corner4.addEventListener('mousedown', resizeDiagonal_four);
-            */
             top.addEventListener('mousedown', resizeWindow);
             left.addEventListener('mousedown', resizeWindow);
             right.addEventListener('mousedown', resizeWindow);
-            /*
-            bottom.addEventListener('mousedown', resizeYPositive);
-            */
+            bottom.addEventListener('mousedown', resizeWindow);
+            corner1.addEventListener('mousedown', resizeWindow);
+            corner2.addEventListener('mousedown', resizeWindow);
+            corner3.addEventListener('mousedown', resizeWindow);
+            corner4.addEventListener('mousedown', resizeWindow);
+           
+           function resizeWindow(e) {
+               let offsetTop = tackledWindow.offsetTop
+               let offsetLeft = tackledWindow.offsetLeft
 
-            var windowsHeight = parseInt((getAttribute(tackledWindow, 'height'))) 
-            var windowsWidth = parseInt((getAttribute(tackledWindow, 'width')))
-            
-            function resizeWindow(e) {
-
+               let windowsHeight = parseInt((getAttribute(tackledWindow, 'height'))) 
+               let windowsWidth = parseInt((getAttribute(tackledWindow, 'width')))
+                
+                
                 let offsetY = e.clientY 
                 let offsetX = e.clientX
-                
-                let offsetTop = tackledWindow.offsetTop
-                let offsetLeft = tackledWindow.offsetLeft
-
+                                
                 let newHeight, newWidth, newOffsetTop, newOffsetLeft
 
                 let tackledBorder = document.getElementById(this.id).id
@@ -294,44 +294,30 @@ function resizableWindowEvent(window) {
                 tackledWindow.addEventListener('mouseleave', stopDragging)
                 
                 function startDrag(e) {
+
+                    if (tackledBorder == 'top' || tackledBorder == 'corner-1' || tackledBorder == 'corner-2') {
+                        newOffsetTop = offsetTop + (e.clientY - offsetY) 
+                        newHeight = windowsHeight - (e.clientY - offsetY)
+                    }
+
+                    if (tackledBorder == 'bottom' || tackledBorder == 'corner-3' || tackledBorder == 'corner-4') {
+                        newHeight = windowsHeight - (offsetY - e.clientY)
+                    }
+
+                    if (tackledBorder == 'left' || tackledBorder == 'corner-1' || tackledBorder == 'corner-3') {
+                        newOffsetLeft = offsetLeft + (e.clientX - offsetX)
+                        newWidth = windowsWidth - (e.clientX - offsetX)
+                    }
+
+                    if (tackledBorder == 'right' || tackledBorder == 'corner-2' || tackledBorder == 'corner-4') {
+                        newWidth = windowsWidth - (offsetX - e.clientX)
+                    }
                 
-                    if (tackledBorder == 'top') {
-                        newHeight = (windowsHeight - (windowsHeight - windowsHeight - (offsetY - e.clientY)))
-                        newOffsetTop = (e.clientY - (e.clientY - offsetTop) - (offsetY - e.clientY))
-                       
-                    }
-                    
-                    else if (tackledBorder == 'bottom') {
-                  
-                    }
+                    tackledWindow.style.height = newHeight + 'px'
+                    tackledWindow.style.top = newOffsetTop + 'px'
+                    tackledWindow.style.left = newOffsetLeft + 'px'
+                    tackledWindow.style.width = newWidth + 'px'
 
-                    else if (tackledBorder == 'left') {
-                        
-                    }
-
-                    else if (tackledBorder == 'right') {
-                     
-                    }
-
-
-                    else if (tackledBorder == 'corner1') {
-                    
-                    }
-
-                    else if (tackledBorder == 'corner2') {
-                    
-                    }
-
-                    else if (tackledBorder == 'corner3') {
-                    
-                    }
-
-                    else if (tackledBorder == 'corner4') {
-                    
-                    }
-
-                    //tackledWindow.style.height = newHeight + 'px'
-                    //tackledWindow.style.top = newOffsetTop + 'px'
                 }
 
                 function stopDragging() {
