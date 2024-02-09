@@ -66,12 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     
     let menuPrograms = Array.from(document.querySelectorAll('session'))
+    let menuFooter = document.getElementById('footer-bar')
     
     menuPrograms.forEach((menuCell) => {
 
         menuCell.addEventListener('click', () => {    
 
-            createNewWindow(desktop, menuCell)
+            createNewWindow(desktop, menuCell, menuFooter)
 
             openWindows =  Array.from(document.getElementsByClassName('New Window'))
 
@@ -82,13 +83,24 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-function createNewWindow(finalLocation, cellClicked) {
+function createNewWindow(finalLocation, cellClicked, footerBar) {
 
     if (cellClicked.className.includes('Closed')) {
         
         let newWindow = document.createElement('div')
         newWindow.id = 'new-window'
         newWindow.className = 'New Window'
+
+        let buttonContainer = document.createElement('div')
+        buttonContainer.height = '100%'
+        buttonContainer.id = 'button-container'
+        let minimizeWindow = document.createElement('button')
+        minimizeWindow.id = 'minimize-window'
+        let closeWindow = document.createElement('button')
+        closeWindow.id = 'minimize-window'
+        let fullWindow = document.createElement('button')
+        fullWindow.id = 'full-window'
+        buttonContainer.append(minimizeWindow, closeWindow, fullWindow)
         
         let windowHeader = document.createElement('div')
         windowHeader.style.width = '100%'
@@ -96,20 +108,23 @@ function createNewWindow(finalLocation, cellClicked) {
         windowHeader.style.background = 'lightblue'
         windowHeader.id = 'window-header'
         
-
         let windowContent = document.createElement('object')
         windowContent.style.width = '100%'
-        windowContent.style.height = '100%'
+        windowContent.style.height = '100%' 
         
-      
-
+        let windowBar = document.createElement('div')
+        windowBar.id = 'window-bar'
         
+        let textNode
 
-        if (cellClicked.className == 'Paint Cell') {
+        if (cellClicked.className.includes('Paint')) {
+            textNode = document.createTextNode('Paint')
+            windowBar.append(textNode)
             windowContent.setAttribute('data', 'pages/paint/paint.html')
         }
         
-        
+        footerBar.append(windowBar)
+        windowHeader.append(buttonContainer)
         newWindow.append(windowHeader)
         newWindow.append(windowContent)
         finalLocation.append(newWindow)
@@ -132,7 +147,6 @@ function moveWindowEvent(window) {
 
                 let offsetX = e.offsetX
                 let offsetY = e.offsetY
-                
                 
                 currentWindow.firstChild.addEventListener('mousemove', newOffset)
                 currentWindow.firstChild.addEventListener('mouseup', removingEvents)
@@ -247,8 +261,6 @@ function resizableWindowEvent(window) {
             tackledWindow.appendChild(corner3);
             tackledWindow.appendChild(corner4);
 
-
-
             /*
             corner1.addEventListener('mousedown', resizeDiagonal_one);
             corner2.addEventListener('mousedown', resizeDiagonal_two);
@@ -264,24 +276,35 @@ function resizableWindowEvent(window) {
 
             var windowsHeight = parseInt((getAttribute(tackledWindow, 'height'))) 
             var windowsWidth = parseInt((getAttribute(tackledWindow, 'width')))
-            var offsetTop = tackledWindow.offsetTop
-            var offsetLeft = tackledWindow.offsetLeft
-
+            
             function resizeWindow(e) {
 
+                let offsetY = e.clientY 
                 let offsetX = e.clientX
-                let offsetY = e.clientY
+                
+                let offsetTop = tackledWindow.offsetTop
+                let offsetLeft = tackledWindow.offsetLeft
+
+                let newHeight, newWidth, newOffsetTop, newOffsetLeft
 
                 let tackledBorder = document.getElementById(this.id).id
+
                 tackledWindow.addEventListener('mousemove', startDrag)
                 tackledWindow.addEventListener('mouseup', stopDragging)
+                tackledWindow.addEventListener('mouseleave', stopDragging)
                 
                 function startDrag(e) {
                 
                     if (tackledBorder == 'top') {
-                      
+                        newHeight = (windowsHeight - (windowsHeight - windowsHeight - (offsetY - e.clientY)))
+                        newOffsetTop = (e.clientY - (e.clientY - offsetTop) - (offsetY - e.clientY))
+                       
                     }
                     
+                    else if (tackledBorder == 'bottom') {
+                  
+                    }
+
                     else if (tackledBorder == 'left') {
                         
                     }
@@ -290,9 +313,6 @@ function resizableWindowEvent(window) {
                      
                     }
 
-                    else if (tackledBorder == 'bottom') {
-                    
-                    }
 
                     else if (tackledBorder == 'corner1') {
                     
@@ -309,6 +329,9 @@ function resizableWindowEvent(window) {
                     else if (tackledBorder == 'corner4') {
                     
                     }
+
+                    //tackledWindow.style.height = newHeight + 'px'
+                    //tackledWindow.style.top = newOffsetTop + 'px'
                 }
 
                 function stopDragging() {
