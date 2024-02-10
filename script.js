@@ -69,6 +69,23 @@ document.addEventListener('DOMContentLoaded', () => {
     let menuFooter = document.getElementById('footer-bar')
 
     menuPrograms.forEach((menuCell) => {
+        
+        menuCell.addEventListener('mouseenter', () => {
+            menuCell.style.background = '#0C5FCA'
+            menuCell.style.color = 'white'
+        })
+
+        menuCell.addEventListener('mouseleave', () => {
+            let color = getAttribute(menuCell, 'backgroundcolor')
+            if (menuCell.className == 'Right Repartition') {
+                menuCell.style.background = color
+            }
+            else {
+                menuCell.style.background = color
+            }
+
+            menuCell.style.color = 'black'
+        })
 
         menuCell.addEventListener('click', () => {
 
@@ -78,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             moveWindowEvent(openWindows)
             resizableWindowEvent(openWindows)
-
         })
     })
 })
