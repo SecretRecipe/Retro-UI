@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> 09-02</h2>
+    <p> I finally got past my resizable window dilemma after a while.</p>
+    <img src = "Screenshot 2024-02-09 at 07-05-31 Windows XP UI.png">
+    <p> This is an attempt of explaining how this was done</p>
+    <li>
+        <ul> 
+            Bunch of divs are created to take place as the <strong> borders </strong> of the resizable window and receive the mouse events
+        </ul>
+        <ul> 
+            When any of them are pressed, the function <strong> resizeWindow() </strong> is called
+        </ul>
+        <ul>
+            <li> Bunch of variables are created to store useful informations about the Window and the events </li>
+        </ul>
+        <ul>
+            <li> A variable called 'tackledBorder' gets the ID of the border clicked and activates the resizing Event</li>
+        </ul>
+        <ul>
+            <li> As the mouse moves, the event happens and calculation based on the offset distance (top and left) and the height/width happens!</li>
+            <ul>
+                <li>Each corner and side has their own different calculation</li>
+            </ul>
+        </ul>
+    </li>
+    <p> I also implemented a behavior to show the window open over the footer bar.</p>
+</body>
+</html>
