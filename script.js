@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    let menuPrograms = Array.from(document.querySelectorAll('session'))
-    let menuFooter = document.getElementById('footer-bar')
+    var menuPrograms = Array.from(document.querySelectorAll('session'))
+    var menuFooter = document.getElementById('footer-bar')
 
     menuPrograms.forEach((menuCell) => {
         
@@ -83,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
             else {
                 menuCell.style.background = color
             }
-
             menuCell.style.color = 'black'
         })
 
@@ -92,9 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
             createNewWindow(desktop, menuCell, menuFooter)
 
             openWindows = Array.from(document.getElementsByClassName('New Window'))
-
+            footerOpen = Array.from(document.getElementsByClassName('Window Bar'))
+            openWindowsButtons = Array.from(document.getElementsByClassName('Window Buttons'))
             moveWindowEvent(openWindows)
             resizableWindowEvent(openWindows)
+            startButtonInteraction(openWindowsButtons, menuCell, footerOpen)
+            
         })
     })
 })
@@ -104,50 +106,67 @@ function createNewWindow(finalLocation, cellClicked, footerBar) {
     if (cellClicked.className.includes('Closed')) {
 
         let newWindow = document.createElement('div')
-        newWindow.id = 'new-window'
         newWindow.className = 'New Window'
-
+        
         let buttonContainer = document.createElement('div')
         buttonContainer.height = '100%'
         buttonContainer.id = 'button-container'
-        let minimizeWindow = document.createElement('button')
-        minimizeWindow.id = 'minimize-window'
-        let closeWindow = document.createElement('button')
-        closeWindow.id = 'minimize-window'
-        let fullWindow = document.createElement('button')
-        fullWindow.id = 'full-window'
-        buttonContainer.append(minimizeWindow, closeWindow, fullWindow)
-
+        
+        let minimizeButton = document.createElement('button')
+        minimizeButton.id = 'minimize-window'
+        minimizeButton.innerHTML = '-'
+        minimizeButton.className = 'Window Buttons'
+        
+        let closeButton = document.createElement('button')
+        closeButton.id = 'close-window'
+        closeButton.innerHTML = 'X'
+        closeButton.className = 'Window Buttons'
+        
+        let fullButton = document.createElement('button')
+        fullButton.id = 'full-window'
+        fullButton.innerHTML = 'f'
+        fullButton.className = 'Window Buttons'
+        
+        buttonContainer.append(minimizeButton, closeButton, fullButton)
+        
         let windowHeader = document.createElement('div')
         windowHeader.style.width = '100%'
         windowHeader.style.height = '10%'
         windowHeader.style.background = 'lightblue'
         windowHeader.id = 'window-header'
-
+        
         let windowContent = document.createElement('object')
         windowContent.style.width = '100%'
         windowContent.style.height = '100%'
-
-        let windowBar = document.createElement('div')
-        windowBar.id = 'window-bar'
-
-        let textNode
-
+        
+        let footerWindow = document.createElement('div')
+        footerWindow.style.width = '25%'
+        footerWindow.style.height = '100%'
+        footerWindow.style.background = 'lightblue'
+        footerWindow.className = 'Footer Open'
+        
         if (cellClicked.className.includes('Paint')) {
-            textNode = document.createTextNode('Paint')
-            windowBar.append(textNode)
+            footerWindow.innerHTML = 'Paint'
+            newWindow.id = 'paint'
+            footerWindow.id = newWindow.id + '-' + 'footer'
             windowContent.setAttribute('data', 'pages/paint/paint.html')
         }
+        
+        if (cellClicked.className.includes('Internet')) {
+            footerWindow.innerHTML = 'Internet'
+            newWindow.id = 'internet'
+            footerWindow.id = newWindow.id + '-' + 'footer'
+            //windowContent.setAttribute('data', 'pages/paint/paint.html')
+        }
 
-        footerBar.append(windowBar)
+        footerBar.append(footerWindow)
         windowHeader.append(buttonContainer)
         newWindow.append(windowHeader)
         newWindow.append(windowContent)
         finalLocation.append(newWindow)
-
+        
         newClassName = cellClicked.className.replace('Closed', 'Open')
         cellClicked.className = newClassName
-
     }
 }
 
@@ -159,7 +178,6 @@ function moveWindowEvent(window) {
     for (i = 0; i < window.length; i++) {
         (function (currentWindow) {
             currentWindow.firstChild.addEventListener('mousedown', (e) => {
-
 
                 let offsetX = e.offsetX
                 let offsetY = e.offsetY
@@ -344,7 +362,48 @@ function resizableWindowEvent(window) {
     }
 }
 
+function startButtonInteraction(buttons, windowState) {
+    let parentFooter = document.getElementById('paint-footer')
+    console.log(parentFooter)
+    for (i=0; i < buttons.length; i++) {
+        (function (tackledButton){
+            
+            let parentWindow = tackledButton.parentElement.parentElement.parentElement
+            let parentHeight = getAttribute(parentWindow, 'height') 
+            let parentWidth = getAttribute(parentWindow, 'width')
+            let isFull = 0
 
+            let footerID = parentWindow.id + '-footer'
+            let parentFooter = document.getElementById(parentWindow.id + '-footer')
+
+            tackledButton.addEventListener('click', () => {
+                if (tackledButton.id == 'minimize-window') {
+                    parentWindow.style.display = 'none'
+                }
+
+                else if (tackledButton.id == 'close-window') {
+                    let newClassName = windowState.className.replace('Open', 'Closed')
+                    windowState.className = newClassName
+                    parentWindow.style.display = 'none'
+                    parentFooter.remove()
+                }
+                else if (tackledButton.id == 'full-window') {
+                    if (isFull == 0)  {
+                        parentWindow.style.width = '100%'
+                        parentWindow.style.height = '95%'
+                    }
+                    else {
+                        parentWindow.style.width = '2px'
+                        parentWindow.style.height = parentHeight + 'px'
+                    }
+                }
+            })
+
+
+        }
+        (buttons[i]))
+    }
+}
 
 
 

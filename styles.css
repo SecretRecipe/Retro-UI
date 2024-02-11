@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .Desktop {
     display: flex;
     position: relative;
@@ -20,6 +26,7 @@
     position: absolute;
     height: 65%;
     bottom: 0px;
+    border-radius: 0px 25px;
     background: white;
 }
 
@@ -110,9 +117,6 @@
 }
 
 .Desktop .Menu .Footer .Buttons button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 48px;
     height: 48px;
 }
@@ -126,26 +130,20 @@
     background: rgb(39, 80, 246);
 }
 
+.Desktop .Footer.Bar .Footer.Open {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
 .Desktop .Footer.Bar #menu-button {
     width: 9%;
     height: 100%;
     border-radius: 0px 10px 10px 0px;
     border: none;
     background: rgb(44, 173, 44);
-}
-
-.Desktop .Footer.Bar #window-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 25%;
-    border: 5px solid black;
-    background: rgb(189, 200, 189);
-}
-
-
-.Desktop .Footer.Bar .Window.Bar {
-    background: red;
 }
 
 .Menu.Hidden {
@@ -181,9 +179,11 @@
 }
 
 .Desktop .New.Window #window-header #button-container button {
-    background: blue;
     width: 25px;
     height: 25px;
     border: 2px solid rgb(255, 255, 255);
+    color: white;
+    font-size: 25px;
+    background: blue;
 
 }
