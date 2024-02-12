@@ -1,66 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* TO DO 
-    
-    MAKE WINDOW MOVABLE THROUGH HEADER CLICKING
-
-    -> Get clicking event working over window
-    */
-
-    /*
-
-    class WindowManager {
-
-        constructor(width, height, leftPosition, topPosition) {
-            this.width = width
-            this.height = height
-            this.leftPosition = leftPosition
-            this.topPosition = topPosition
-        }
-        
-        MousePosition(positionX, positionY) {
-    
-            const self = this
-            self.positionX = positionX
-            self.positionY = positionY
-
-            document.addEventListener('mousemove', moveWindowEvent)
-            document.addEventListener('mouseup', removeEvent)
-            document.addEventListener('mouseleave', removeEvent)
-
-            function moveWindowEvent(e) {
-                e.preventDefault()
-                let newOffsetX = e.clientX - self.positionX 
-                let newOffsetY = e.clientY - self.positionY
-                console.log(newOffsetX, newOffsetY)
-                self.leftPosition = newOffsetX
-                self.topPosition = newOffsetY
-                console.log(newOffsetX, newOffsetY)
-            }
-    
-            function removeEvent() {
-                document.removeEventListener('mousemove', moveWindowEvent)
-                document.addEventListener('mouseup', removeEvent)
-                document.addEventListener('mouseleave', removeEvent)
-    
-            }
-        }
-    }
-    */
-
     const desktop = document.getElementById('desktop')
     const windowsButton = document.getElementById('menu-button')
     const windowsMenu = document.getElementById('menu')
+    windowsMenu.className = 'Menu Hidden'
     let openMenu = 0
-    //windowsMenu.className = 'Menu Hidden'
-
+    
     windowsButton.addEventListener('click', () => {
         if (openMenu == 0) {
             windowsMenu.className = 'Menu'
+            windowsButton.style.background = 'green'
             openMenu += 1
         }
         else {
             windowsMenu.className = 'Menu Hidden'
+            windowsButton.style.background = 'rgb(44, 173, 44)'
             openMenu -= 1
         }
     })
@@ -101,77 +55,76 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
+function getAttribute(element, style) {
+    return window.getComputedStyle(element).getPropertyValue(style)
+}
+
 function createNewWindow(finalLocation, cellClicked, footerBar) {
-
+    
     if (cellClicked.className.includes('Closed')) {
-
+        
         let newWindow = document.createElement('div')
         newWindow.className = 'New Window'
-        
-        let buttonContainer = document.createElement('div')
-        buttonContainer.height = '100%'
-        buttonContainer.id = 'button-container'
-        
-        let minimizeButton = document.createElement('button')
-        minimizeButton.id = 'minimize-window'
-        minimizeButton.innerHTML = '-'
-        minimizeButton.className = 'Window Buttons'
-        
-        let closeButton = document.createElement('button')
-        closeButton.id = 'close-window'
-        closeButton.innerHTML = 'X'
-        closeButton.className = 'Window Buttons'
-        
-        let fullButton = document.createElement('button')
-        fullButton.id = 'full-window'
-        fullButton.innerHTML = 'f'
-        fullButton.className = 'Window Buttons'
-        
-        buttonContainer.append(minimizeButton, closeButton, fullButton)
+        let newWindowID = getID(cellClicked)
         
         let windowHeader = document.createElement('div')
         windowHeader.style.width = '100%'
         windowHeader.style.height = '10%'
-        windowHeader.style.background = 'lightblue'
+        windowHeader.style.background = '#2b68ea'
+        windowHeader.style.boxShadow = 'inset 0px 5px 5px #3D84EE'
         windowHeader.id = 'window-header'
+        
+        /* HEADER */
+
+        let newWindowTitle = document.createElement('div')
+        newWindowTitle.id = 'new-title'
+        newWindowTitle.innerHTML = `<img src = "images/icons/${newWindowID}.ico">`
+        let title = document.createTextNode(newWindowID)
+        newWindowTitle.append(title)
+        
+        let newButtons = document.createElement('div')
+        newButtons.height = '100%'
+        newButtons.id = 'button-container'
+        
+        let minimizeButton = document.createElement('button')
+        minimizeButton.id = 'minimize-window'
+        minimizeButton.innerHTML = '<img src = "images/icons/minimize-window.png">'
+        minimizeButton.className = 'Window Buttons'
+        
+        let closeButton = document.createElement('button')
+        closeButton.id = 'close-window'
+        closeButton.innerHTML = '<img src = "images/icons/close-window.png">'
+        closeButton.className = 'Window Buttons'
+        
+        let fullButton = document.createElement('button')
+        fullButton.id = 'full-window'
+        fullButton.innerHTML = '<img src = "images/icons/full-window.jpg">'
+        fullButton.className = 'Window Buttons'
+        
+        newButtons.append(minimizeButton, fullButton, closeButton)
         
         let windowContent = document.createElement('object')
         windowContent.style.width = '100%'
         windowContent.style.height = '100%'
         
         let footerWindow = document.createElement('div')
-        footerWindow.style.width = '25%'
+        footerWindow.style.width = 'auto'
         footerWindow.style.height = '100%'
-        footerWindow.style.background = 'lightblue'
+        footerWindow.id = newWindowID + '-footer'
         footerWindow.className = 'Footer Open'
+        footerWindow.innerHTML = `<img src = "images/icons/${newWindowID}.ico"><br><p>${newWindowID}`        
+        windowHeader.append(newWindowTitle)
+        windowHeader.append(newButtons)
         
-        if (cellClicked.className.includes('Paint')) {
-            footerWindow.innerHTML = 'Paint'
-            newWindow.id = 'paint'
-            footerWindow.id = newWindow.id + '-' + 'footer'
-            windowContent.setAttribute('data', 'pages/paint/paint.html')
-        }
-        
-        if (cellClicked.className.includes('Internet')) {
-            footerWindow.innerHTML = 'Internet'
-            newWindow.id = 'internet'
-            footerWindow.id = newWindow.id + '-' + 'footer'
-            //windowContent.setAttribute('data', 'pages/paint/paint.html')
-        }
-
-        footerBar.append(footerWindow)
-        windowHeader.append(buttonContainer)
         newWindow.append(windowHeader)
         newWindow.append(windowContent)
         finalLocation.append(newWindow)
+
+        footerBar.append(footerWindow)
         
         newClassName = cellClicked.className.replace('Closed', 'Open')
         cellClicked.className = newClassName
     }
-}
-
-function getAttribute(element, style) {
-    return window.getComputedStyle(element).getPropertyValue(style)
 }
 
 function moveWindowEvent(window) {
@@ -363,19 +316,12 @@ function resizableWindowEvent(window) {
 }
 
 function startButtonInteraction(buttons, windowState) {
-    let parentFooter = document.getElementById('paint-footer')
-    console.log(parentFooter)
     for (i=0; i < buttons.length; i++) {
         (function (tackledButton){
             
-            let parentWindow = tackledButton.parentElement.parentElement.parentElement
-            let parentHeight = getAttribute(parentWindow, 'height') 
-            let parentWidth = getAttribute(parentWindow, 'width')
-            let isFull = 0
-
-            let footerID = parentWindow.id + '-footer'
-            let parentFooter = document.getElementById(parentWindow.id + '-footer')
-
+            parentWindow = tackledButton.parentElement.parentElement.parentElement
+            parentFooter = document.getElementById(windowState.id + '-footer')
+            
             tackledButton.addEventListener('click', () => {
                 if (tackledButton.id == 'minimize-window') {
                     parentWindow.style.display = 'none'
@@ -384,6 +330,7 @@ function startButtonInteraction(buttons, windowState) {
                 else if (tackledButton.id == 'close-window') {
                     let newClassName = windowState.className.replace('Open', 'Closed')
                     windowState.className = newClassName
+
                     parentWindow.style.display = 'none'
                     parentFooter.remove()
                 }
@@ -406,4 +353,6 @@ function startButtonInteraction(buttons, windowState) {
 }
 
 
-
+function getID(cell) {
+    return cell.id
+}
