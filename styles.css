@@ -135,16 +135,18 @@ button {
     display: flex;
     justify-content: start;
     align-items: center;
+    gap: 5%;
+    padding: 2%;
+    border-radius: 0px 5px 5px 5px;
     color: white;
     text-shadow: 2px 2px black;
     box-shadow: inset 2px 2px 6px 0px rgb(113, 155, 247);
     background: #3980F4;
-    border: 5px solid black;
 }
 
 .Desktop .Footer.Bar .Footer.Open img{
-    width: 32px;
-    height: 32px;
+    width: 22px;
+    height: 22px;
 }
 
 .Desktop .Footer.Bar #menu-button {
@@ -171,47 +173,40 @@ button {
     display: none;
 }
 
-.Desktop .New.Window {
+.Desktop .Open.Window {
     position: absolute;
     width: 40%;
     height: 50%;
-    background: red;
     border: 2px solid black;
 }
 
-.Desktop .New.Window #window-header {
+.Desktop .Open.Window .Window.Header, 
+.Desktop .Open.Window .App.Title,
+.Desktop .Open.Window .Window.Header .Button.Container {
     display: flex;
+    align-items: center;
+}
+
+.Desktop .Open.Window .Window.Header {
     justify-content: space-between;
-    gap: 20px;
-    align-items: center;
-    padding: 2%;
+    padding: 1.5%;
+    background: linear-gradient(rgb(11, 94, 225), rgb(43, 110, 192));
     color: white;
-    text-shadow: 2px 2px black;
 }
 
-.Desktop .New.Window #window-header #new-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.Desktop .Open.Window .Window.Header  .App.Title img {
+    width: 35px;
 }
 
-.Desktop .New.Window #window-header img {
-    width: 32px;
-    height: 32px;
+.Desktop .Open.Window .Button.Container {
+    gap: 3%;
 }
 
-
-.Desktop .New.Window #window-header #button-container {
-    display: flex;
-    gap: 5%;
-}
-
-.Desktop .New.Window #window-header #button-container button {
-    width: 25px;
+.Desktop .Open.Window .Window.Header .Button.Container button{
     height: 25px;
+    width: 25px;
 }
-
-.Desktop .New.Window #button-container button img {
+.Desktop .Open.Window .Button.Container button img {
     width: 100%;
-    height: 100%;
+    height: 100%;   
 }
