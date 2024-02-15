@@ -11,28 +11,38 @@ var openWindows = []
 
 class Window {
 
-    constructor(tackledWindow, tackledHeader, footer, id, minimize, close, full, width, height) {
+    constructor(tackledWindow, tackledHeader, footer, id, width, height) {
         this.tackledWindow = tackledWindow
         this.tackledHeader = tackledHeader
         this.footer = footer
         this.id = id
-        this.minimize = minimize
-        this.close = close 
-        this.full = full
-        this.width = width 
+        this.width = width
         this.height = height
     }
 
     getYSpan(e, y) {
-        let newY = e.clientY - y
-        return e, newY
+        return e, e.clientY - y
     }
 
     getXSpan(e, x) {
-        let newX = e.clientX - x
-        return e, newX
+        return e, e.clientX - x
     }
 
+    close(tackledElement) {
+        tackledElement.style.display = 'none'
+    }
+
+    open(tackledElement) {
+        tackledElement.style.display = 'block'
+    }
+
+    distantiateLeft(tackledElement, newPosition) {
+        tackledElement.style.left = newPosition + 'px'
+    }
+
+    distantiateTop(tackledElement, newPosition) {
+        tackledElement.style.top = newPosition + 'px'
+    }
 }
 
 
@@ -56,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
-function createNewWindow(cellClicked, footer) {
+function createNewWindow(cellClicked, footer, size = 20) {
 
     if (cellClicked.className.includes('Closed')) {
 
@@ -64,7 +74,96 @@ function createNewWindow(cellClicked, footer) {
 
         let newWindow = document.createElement('div')
         newWindow.className = 'Open Window'
-        newWindow.id = cellClickedID 
+        newWindow.id = cellClickedID
+
+        const top = document.createElement('div')
+        top.style.width = '100%';
+        top.style.height = size + 'px';
+        top.style.backgroundColor = 'transparent';
+        top.style.position = 'absolute';
+        top.style.top = - (size / 2) + 'px';
+        top.style.left = '0px';
+        top.style.cursor = 'n-resize';
+        top.id = 'top'
+
+        const bottom = document.createElement('div');
+        bottom.style.width = '100%';
+        bottom.style.height = size + 'px';
+        bottom.style.backgroundColor = 'transparent';
+        bottom.style.position = 'absolute';
+        bottom.style.bottom = - (size / 2) + 'px';
+        bottom.style.left = '0px';
+        bottom.style.cursor = 'n-resize';
+        bottom.id = 'bottom'
+
+        const left = document.createElement('div');
+        left.style.width = size + 'px';
+        left.style.height = '100%';
+        left.style.backgroundColor = 'transparent';
+        left.style.position = 'absolute';
+        left.style.top = '0px';
+        left.style.left = - (size / 2) + 'px';
+        left.style.cursor = 'e-resize';
+        left.id = 'left'
+
+        const right = document.createElement('div');
+        right.style.width = size + 'px';
+        right.style.height = '100%';
+        right.style.backgroundColor = 'transparent';
+        right.style.position = 'absolute';
+        right.style.top = '0px';
+        right.style.right = - (size / 2) + 'px';
+        right.style.cursor = 'e-resize';
+        right.id = 'right'
+
+        const corner1 = document.createElement('div');
+        corner1.style.width = size + 'px';
+        corner1.style.height = size + 'px';
+        corner1.style.backgroundColor = 'transparent';
+        corner1.style.position = 'absolute';
+        corner1.style.top = - (size / 2) + 'px';
+        corner1.style.left = - (size / 2) + 'px';
+        corner1.style.cursor = 'nw-resize';
+        corner1.id = 'corner-1'
+
+        const corner2 = document.createElement('div');
+        corner2.style.width = size + 'px';
+        corner2.style.height = size + 'px';
+        corner2.style.backgroundColor = 'transparent';
+        corner2.style.position = 'absolute';
+        corner2.style.top = - (size / 2) + 'px';
+        corner2.style.right = - (size / 2) + 'px';
+        corner2.style.cursor = 'ne-resize';
+        corner2.id = 'corner-2'
+
+        const corner3 = document.createElement('div');
+        corner3.style.width = size + 'px';
+        corner3.style.height = size + 'px';
+        corner3.style.backgroundColor = 'transparent';
+        corner3.style.position = 'absolute';
+        corner3.style.bottom = - (size / 2) + 'px';
+        corner3.style.left = - (size / 2) + 'px';
+        corner3.style.cursor = 'sw-resize';
+        corner3.id = 'corner-3'
+
+        const corner4 = document.createElement('div');
+        corner4.style.width = size + 'px';
+        corner4.style.height = size + 'px';
+        corner4.style.backgroundColor = 'transparent';
+        corner4.style.position = 'absolute';
+        corner4.style.bottom = - (size / 2) + 'px';
+        corner4.style.right = - (size / 2) + 'px';
+        corner4.style.cursor = 'se-resize';
+        corner4.id = 'corner-4'
+
+        newWindow.append(top)
+        newWindow.append(bottom)
+        newWindow.append(left)
+        newWindow.append(right)
+        newWindow.appendChild(corner1);
+        newWindow.appendChild(corner2);
+        newWindow.appendChild(corner3);
+        newWindow.appendChild(corner4);
 
         let windowHeader = document.createElement('div')
         windowHeader.className = 'Window Header'
@@ -80,12 +179,12 @@ function createNewWindow(cellClicked, footer) {
         let closeButton = document.createElement('button')
         let fullButton = document.createElement('button')
 
-        minimizeButton.innerHTML = '<img src = "images/icons/minimize-window.png">'
         minimizeButton.id = 'minimize-button'
-        closeButton.innerHTML = '<img src = "images/icons/close-window.png">'
+        minimizeButton.innerHTML = '_'
         closeButton.id = 'close-button'
-        fullButton.innerHTML = '<img src = "images/icons/full-window.jpg">'
+        closeButton.innerHTML = 'X'
         fullButton.id = 'full-button'
+        fullButton.innerHTML = '<i class="bx bx-window"></i>'
 
         let footerWindow = document.createElement('div')
         footerWindow.className = 'Footer Open'
@@ -101,7 +200,7 @@ function createNewWindow(cellClicked, footer) {
 
         cellClicked.className = cellClicked.className.replace('Closed', 'Open')
 
-        openWindows.push(new Window(newWindow, windowHeader, footerWindow, newWindow.id, minimizeButton, closeButton, fullButton, getAttribute(newWindow, 'width'), getAttribute(newWindow, 'height')))
+        openWindows.push(new Window(newWindow, windowHeader, footerWindow, newWindow.id, getAttribute(newWindow, 'width'), getAttribute(newWindow, 'height')))
 
     }
 }
@@ -111,35 +210,102 @@ function startWindowEvents(windows) {
     windows.forEach((window) => {
 
         let appState = document.getElementById(window.id)
-        let width = window.width 
-        let height = window.height
-        let isFull = false 
 
+        window.tackledHeader.addEventListener('mousedown', getHeaderEvents)
+
+        function getHeaderEvents(event) {
+
+            let offSetX = event.clientX
+            let offSetY = event.clientY
+
+            let offsetLeft = window.tackledWindow.offsetLeft
+            let offsetTop = window.tackledWindow.offsetTop
+
+            window.tackledHeader.style.cursor = 'move'
+
+            if (event.target.id == 'close-button') {
+                window.close(window.tackledWindow)
+                window.close(window.footer)
+                appState.className = appState.className.replace('Open', 'Closed')
+            }
+
+            if (event.target.id == 'full-button') {
+                window.tackledWindow.style.width = '100%'
+                window.tackledWindow.style.height = '95%'
+            }
+
+            if (event.target.id == 'minimize-button') {
+                window.close(window.tackledWindow)
+            }
+
+            document.addEventListener('mousemove', elementDrag)
+            document.addEventListener('mouseup', stopEvent)
+
+            function elementDrag(event) {
+                let newOffsetX = window.getXSpan(event, offSetX) + offsetLeft
+                let newOffsetY = window.getYSpan(event, offSetY) + offsetTop
+
+                window.distantiateLeft(window.tackledWindow, newOffsetX)
+                window.distantiateTop(window.tackledWindow, newOffsetY)
+
+            }
+
+            function stopEvent() {
+                document.removeEventListener('mousemove', elementDrag)
+                window.tackledHeader.style.cursor = 'default'
+            }
+
+        }
+
+        window.footer.addEventListener('mousedown', () => {
+            window.open(window.tackledWindow)
+        })
+
+        /*
         window.close.addEventListener('mousedown',() => {
-            window.tackledWindow.style.display = 'none'
-            window.footer.style.display = 'none'
+            window.hide(window.tackledWindow)
+            window.hide(window.footer)
             appState.className = appState.className.replace('Open', 'Closed')
         })
 
         window.minimize.addEventListener('mousedown',() => {
-            window.tackledWindow.style.display = 'none'
+            window.hide(window.tackledWindow)
         })
 
         window.full.addEventListener('mousedown', () => {
-            if (isFull == true) {
-                window.tackledWindow.style.width = window.width
-                window.tackledWindow.style.height = window.height
-                isFull = true
-            }
-            else {
-                window.tackledWindow.style.width = '100%'
-                window.tackledWindow.style.height = '100%'
-                isFull = false
+            window.tackledWindow.style.width = '100%'
+            window.tackledWindow.style.height = '95%'
+        })
+
+        window.footer.addEventListener('click', () => {
+            if (getAttribute(window.tackledWindow, 'display') == 'none') {
+                window.show(window.tackledWindow)
             }
         })
 
-    
-        
+        window.tackledHeader.addEventListener('mousedown', elementDrag) 
+
+        function elementDrag(e) {
+            
+            let offSetX = e.clientX
+            let offSetY = e.clientY 
+          
+            document.addEventListener('mousemove', moveWindow)
+            document.addEventListener('mouseup', stopEvent)
+
+            function moveWindow(e) {
+                
+
+                window.tackledWindow.style.left = newOffsetX + 'px'
+                window.tackledWindow.style.top = newOffsetY + 'px'
+            }
+
+            function stopEvent() {
+                document.removeEventListener('mousemove', moveWindow)
+            }
+        }
+        */
+
     })
 }
 
@@ -244,5 +410,5 @@ function resizableWindowEvent(window) {
     }
 }
 */
- 
+
 
