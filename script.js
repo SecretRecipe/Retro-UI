@@ -7,9 +7,6 @@ function getID(cell) {
     return cell.id
 }
 
-var openWindows = []
-var directions = []
-
 class Window {
 
     constructor(tackledWindow, tackledHeader, footer, id) {
@@ -53,7 +50,10 @@ class Window {
 
 }
 
+var openWindows = []
+var directions = []
 
+/* INTERACTING WITH MENU */
 document.addEventListener('DOMContentLoaded', () => {
 
     var desktop = document.getElementById('desktop')
@@ -63,19 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
     var menuFooter = document.getElementById('footer-bar')
 
     menuPrograms.forEach((menuCell) => {
-
         menuCell.addEventListener('click', () => {
-
             createNewWindow(menuCell, footer)
             startWindowEvents(openWindows)
-
         })
     })
 })
 
-
+/* OPENING NEW WINDOW */
 function createNewWindow(cellClicked, footer, size = 20) {
-
     if (cellClicked.className.includes('Closed')) {
 
         let cellClickedID = getID(cellClicked)
@@ -181,7 +177,7 @@ function createNewWindow(cellClicked, footer, size = 20) {
         newWindow.appendChild(corner3);
         newWindow.appendChild(corner4);
 
-        directions.push(top, bottom, left, right, corner1, corner2, corner3, corner4)
+        /* HEADER */
 
         let windowHeader = document.createElement('div')
         windowHeader.className = 'Window Header'
@@ -225,13 +221,10 @@ function createNewWindow(cellClicked, footer, size = 20) {
 }
 
 function startWindowEvents(windows) {
-
-    borders = Array.from(document.getElementsByClassName('Window Border'))
-
+    
     windows.forEach((window) => {
 
-        let appState = document.getElementById(window.id)
-
+        let appState = document.getElementById(window.id)   
         window.tackledHeader.addEventListener('mousedown', getHeaderEvents)
         window.tackledHeader.addEventListener('mousedown', elementDrag)
         document.addEventListener('mousedown', elementDrag)
@@ -252,9 +245,11 @@ function startWindowEvents(windows) {
             if (event.target.id == 'minimize-button') {
                 window.close(window.tackledWindow)
             }
-
         }
-
+  
+        window.footer.addEventListener('mousedown', () => {
+            window.open(window.tackledWindow)
+        })
 
         function elementDrag(event) {
 
@@ -309,17 +304,10 @@ function startWindowEvents(windows) {
                         let newWidth = width - window.getXSpan(event, X, event.clientX)
                         window.changeWidth(window.tackledWindow, newWidth)
                     }
-                    
-
+                
                     window.distantiateTop(window.tackledWindow, newOffsetTop)
                     window.distantiateLeft(window.tackledWindow, newOffsetLeft)
-                    /*
-                    
-                    
-                    */
                 }
-
-
             }
 
             function stopEvent() {
@@ -328,114 +316,5 @@ function startWindowEvents(windows) {
             }
 
         }
-
-        window.footer.addEventListener('mousedown', () => {
-            window.open(window.tackledWindow)
-        })
     })
-
 }
-
-
-
-
-
-
-/*
-function moveWindowEvent(window) {
-    for (i = 0; i < window.length; i++) {
-        (function (currentWindow) {
-            currentWindow.firstChild.addEventListener('mousedown', (e) => {
-
-                let offsetX = e.offsetX
-                let offsetY = e.offsetY
-
-                document.addEventListener('mousemove', newOffset)
-                document.addEventListener('mouseup', removingEvents)
-
-                function newOffset(e) {
-                    e.preventDefault()
-                    offSetX = e.clientX - offsetX
-                    offSetY = e.clientY - offsetY
-                    currentWindow.style.left = offSetX + 'px'
-                    currentWindow.style.top = offSetY + 'px'
-                }
-
-                function removingEvents() {
-                    document.removeEventListener('mousemove', newOffset)
-                    document.removeEventListener('mouseup', removingEvents)
-                }
-
-            })
-        })
-            (window[i])
-    }
-}
-
-function resizableWindowEvent(window) {
-   
-
-            top.addEventListener('mousedown', resizeWindow);
-            left.addEventListener('mousedown', resizeWindow);
-            right.addEventListener('mousedown', resizeWindow);
-            bottom.addEventListener('mousedown', resizeWindow);
-            corner1.addEventListener('mousedown', resizeWindow);
-            corner2.addEventListener('mousedown', resizeWindow);
-            corner3.addEventListener('mousedown', resizeWindow);
-            corner4.addEventListener('mousedown', resizeWindow);
-
-            function resizeWindow(e) {
-                
-                let offsetTop = tackledWindow.offsetTop
-                let offsetLeft = tackledWindow.offsetLeft
-                let windowsHeight = parseInt((getAttribute(tackledWindow, 'height')))
-                let windowsWidth = parseInt((getAttribute(tackledWindow, 'width')))
-                let offsetY = e.clientY
-                let offsetX = e.clientX
-                let newHeight, newWidth, newOffsetTop, newOffsetLeft
-
-                let tackledBorder = document.getElementById(this.id).id
-
-                document.addEventListener('mousemove', startDrag)
-                document.addEventListener('mouseup', stopDragging)
-
-                function startDrag(e) {
-
-                    if (tackledBorder == 'top' || tackledBorder == 'corner-1' || tackledBorder == 'corner-2') {
-                        newOffsetTop = offsetTop + (e.clientY - offsetY)
-                        newHeight = windowsHeight - (e.clientY - offsetY)
-                    }
-
-                    if (tackledBorder == 'bottom' || tackledBorder == 'corner-3' || tackledBorder == 'corner-4') {
-                        newHeight = windowsHeight - (offsetY - e.clientY)
-                    }
-
-                    if (tackledBorder == 'left' || tackledBorder == 'corner-1' || tackledBorder == 'corner-3') {
-                        newOffsetLeft = offsetLeft + (e.clientX - offsetX)
-                        newWidth = windowsWidth - (e.clientX - offsetX)
-                    }
-
-                    if (tackledBorder == 'right' || tackledBorder == 'corner-2' || tackledBorder == 'corner-4') {
-                        newWidth = windowsWidth - (offsetX - e.clientX)
-                    }
-
-                    tackledWindow.style.height = newHeight + 'px'
-                    tackledWindow.style.top = newOffsetTop + 'px'
-                    tackledWindow.style.left = newOffsetLeft + 'px'
-                    tackledWindow.style.width = newWidth + 'px'
-
-                }
-
-                function stopDragging() {
-                    document.removeEventListener('mousemove', startDrag);
-                }
-
-            }
-
-        }
-            (window[i]))
-    }
-}
-*/
-
-
