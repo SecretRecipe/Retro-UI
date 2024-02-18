@@ -8,24 +8,23 @@ function getID(cell) {
 }
 
 var openWindows = []
+var directions = []
 
 class Window {
 
-    constructor(tackledWindow, tackledHeader, footer, id, width, height) {
+    constructor(tackledWindow, tackledHeader, footer, id) {
         this.tackledWindow = tackledWindow
         this.tackledHeader = tackledHeader
         this.footer = footer
         this.id = id
-        this.width = width
-        this.height = height
     }
 
-    getYSpan(e, y) {
-        return e, e.clientY - y
+    getYSpan(e, y1, y2) {
+        return e, y1 - y2
     }
 
-    getXSpan(e, x) {
-        return e, e.clientX - x
+    getXSpan(e, x1, x2) {
+        return e, x1 - x2
     }
 
     close(tackledElement) {
@@ -43,6 +42,15 @@ class Window {
     distantiateTop(tackledElement, newPosition) {
         tackledElement.style.top = newPosition + 'px'
     }
+
+    changeHeight(tackledElement, newHeight) {
+        tackledElement.style.height = newHeight + 'px'
+    }
+
+    changeWidth(tackledElement, newWidth) {
+        tackledElement.style.width = newWidth + 'px'
+    }
+
 }
 
 
@@ -79,11 +87,12 @@ function createNewWindow(cellClicked, footer, size = 20) {
         const top = document.createElement('div')
         top.style.width = '100%';
         top.style.height = size + 'px';
-        top.style.backgroundColor = 'transparent';
+        top.style.backgroundColor = 'red';
         top.style.position = 'absolute';
         top.style.top = - (size / 2) + 'px';
         top.style.left = '0px';
         top.style.cursor = 'n-resize';
+        top.className = 'Window Border'
         top.id = 'top'
 
         const bottom = document.createElement('div');
@@ -94,6 +103,7 @@ function createNewWindow(cellClicked, footer, size = 20) {
         bottom.style.bottom = - (size / 2) + 'px';
         bottom.style.left = '0px';
         bottom.style.cursor = 'n-resize';
+        bottom.className = 'Window Border'
         bottom.id = 'bottom'
 
         const left = document.createElement('div');
@@ -105,6 +115,7 @@ function createNewWindow(cellClicked, footer, size = 20) {
         left.style.left = - (size / 2) + 'px';
         left.style.cursor = 'e-resize';
         left.id = 'left'
+        left.className = 'Window Border'
 
         const right = document.createElement('div');
         right.style.width = size + 'px';
@@ -115,6 +126,7 @@ function createNewWindow(cellClicked, footer, size = 20) {
         right.style.right = - (size / 2) + 'px';
         right.style.cursor = 'e-resize';
         right.id = 'right'
+        right.className = 'Window Border'
 
         const corner1 = document.createElement('div');
         corner1.style.width = size + 'px';
@@ -125,16 +137,18 @@ function createNewWindow(cellClicked, footer, size = 20) {
         corner1.style.left = - (size / 2) + 'px';
         corner1.style.cursor = 'nw-resize';
         corner1.id = 'corner-1'
+        corner1.className = 'Window Border'
 
         const corner2 = document.createElement('div');
         corner2.style.width = size + 'px';
         corner2.style.height = size + 'px';
-        corner2.style.backgroundColor = 'transparent';
+        corner2.style.backgroundColor = 'pink';
         corner2.style.position = 'absolute';
         corner2.style.top = - (size / 2) + 'px';
         corner2.style.right = - (size / 2) + 'px';
         corner2.style.cursor = 'ne-resize';
         corner2.id = 'corner-2'
+        corner2.className = 'Window Border'
 
         const corner3 = document.createElement('div');
         corner3.style.width = size + 'px';
@@ -145,6 +159,7 @@ function createNewWindow(cellClicked, footer, size = 20) {
         corner3.style.left = - (size / 2) + 'px';
         corner3.style.cursor = 'sw-resize';
         corner3.id = 'corner-3'
+        corner3.className = 'Window Border'
 
         const corner4 = document.createElement('div');
         corner4.style.width = size + 'px';
@@ -155,6 +170,7 @@ function createNewWindow(cellClicked, footer, size = 20) {
         corner4.style.right = - (size / 2) + 'px';
         corner4.style.cursor = 'se-resize';
         corner4.id = 'corner-4'
+        corner4.className = 'Window Border'
 
         newWindow.append(top)
         newWindow.append(bottom)
@@ -165,8 +181,11 @@ function createNewWindow(cellClicked, footer, size = 20) {
         newWindow.appendChild(corner3);
         newWindow.appendChild(corner4);
 
+        directions.push(top, bottom, left, right, corner1, corner2, corner3, corner4)
+
         let windowHeader = document.createElement('div')
         windowHeader.className = 'Window Header'
+        windowHeader.id = 'header'
 
         let appTitle = document.createElement('p')
         appTitle.className = 'App Title'
@@ -200,28 +219,24 @@ function createNewWindow(cellClicked, footer, size = 20) {
 
         cellClicked.className = cellClicked.className.replace('Closed', 'Open')
 
-        openWindows.push(new Window(newWindow, windowHeader, footerWindow, newWindow.id, getAttribute(newWindow, 'width'), getAttribute(newWindow, 'height')))
+        openWindows.push(new Window(newWindow, windowHeader, footerWindow, newWindow.id))
 
     }
 }
 
 function startWindowEvents(windows) {
 
+    borders = Array.from(document.getElementsByClassName('Window Border'))
+
     windows.forEach((window) => {
 
         let appState = document.getElementById(window.id)
 
         window.tackledHeader.addEventListener('mousedown', getHeaderEvents)
+        window.tackledHeader.addEventListener('mousedown', elementDrag)
+        document.addEventListener('mousedown', elementDrag)
 
         function getHeaderEvents(event) {
-
-            let offSetX = event.clientX
-            let offSetY = event.clientY
-
-            let offsetLeft = window.tackledWindow.offsetLeft
-            let offsetTop = window.tackledWindow.offsetTop
-
-            window.tackledHeader.style.cursor = 'move'
 
             if (event.target.id == 'close-button') {
                 window.close(window.tackledWindow)
@@ -238,20 +253,77 @@ function startWindowEvents(windows) {
                 window.close(window.tackledWindow)
             }
 
-            document.addEventListener('mousemove', elementDrag)
+        }
+
+
+        function elementDrag(event) {
+
+            let X = event.clientX
+            let Y = event.clientY
+
+            let left = window.tackledWindow.offsetLeft
+            let top = window.tackledWindow.offsetTop
+            let height = parseInt(getAttribute(window.tackledWindow, 'height'))
+            let width = parseInt(getAttribute(window.tackledWindow, 'width'))
+
+            let tackledElement = event.target.className
+
+            document.addEventListener('mousemove', dragEvent)
             document.addEventListener('mouseup', stopEvent)
 
-            function elementDrag(event) {
-                let newOffsetX = window.getXSpan(event, offSetX) + offsetLeft
-                let newOffsetY = window.getYSpan(event, offSetY) + offsetTop
+            function dragEvent(event) {
 
-                window.distantiateLeft(window.tackledWindow, newOffsetX)
-                window.distantiateTop(window.tackledWindow, newOffsetY)
+                let offSetX = window.getXSpan(event, event.clientX, X)
+                let offSetY = window.getYSpan(event, event.clientY, Y)
+                
+                if (tackledElement == 'Window Header') {
+                    window.tackledHeader.style.cursor = 'move'
+                    window.distantiateLeft(window.tackledWindow,  offSetX + left)
+                    window.distantiateTop(window.tackledWindow, offSetY + top)
+                }
+
+                if (tackledElement == 'Window Border') {
+
+                    tackledBorder = event.target.id
+
+                    if (tackledBorder == 'top' || tackledBorder == 'corner-1' || tackledBorder == 'corner-2') {
+                        let newOffsetTop = top + offSetY
+                        let newHeight = height - offSetY
+                        window.distantiateTop(window.tackledWindow, newOffsetTop)
+                        window.changeHeight(window.tackledWindow, newHeight)    
+                    }
+                    
+                    if (tackledBorder == 'left' || tackledBorder == 'corner-1' || tackledBorder == 'corner-3') {
+                        let newOffsetLeft = left + offSetX
+                        let newWidth = width - offSetX
+                        window.distantiateLeft(window.tackledWindow, newOffsetLeft)
+                        window.changeWidth(window.tackledWindow, newWidth)
+                    }
+
+                    if (tackledBorder == 'bottom' || tackledBorder == 'corner-3' || tackledBorder == 'corner-4') { 
+                        let newHeight = height - window.getYSpan(event, Y, event.clientY)
+                        window.changeHeight(window.tackledWindow, newHeight)     
+                    }
+
+                    if (tackledBorder == 'right' || tackledBorder == 'corner-2' || tackledBorder == 'corner-4') {
+                        let newWidth = width - window.getXSpan(event, X, event.clientX)
+                        window.changeWidth(window.tackledWindow, newWidth)
+                    }
+                    
+
+                    window.distantiateTop(window.tackledWindow, newOffsetTop)
+                    window.distantiateLeft(window.tackledWindow, newOffsetLeft)
+                    /*
+                    
+                    
+                    */
+                }
+
 
             }
 
             function stopEvent() {
-                document.removeEventListener('mousemove', elementDrag)
+                document.removeEventListener('mousemove', dragEvent)
                 window.tackledHeader.style.cursor = 'default'
             }
 
@@ -260,53 +332,8 @@ function startWindowEvents(windows) {
         window.footer.addEventListener('mousedown', () => {
             window.open(window.tackledWindow)
         })
-
-        /*
-        window.close.addEventListener('mousedown',() => {
-            window.hide(window.tackledWindow)
-            window.hide(window.footer)
-            appState.className = appState.className.replace('Open', 'Closed')
-        })
-
-        window.minimize.addEventListener('mousedown',() => {
-            window.hide(window.tackledWindow)
-        })
-
-        window.full.addEventListener('mousedown', () => {
-            window.tackledWindow.style.width = '100%'
-            window.tackledWindow.style.height = '95%'
-        })
-
-        window.footer.addEventListener('click', () => {
-            if (getAttribute(window.tackledWindow, 'display') == 'none') {
-                window.show(window.tackledWindow)
-            }
-        })
-
-        window.tackledHeader.addEventListener('mousedown', elementDrag) 
-
-        function elementDrag(e) {
-            
-            let offSetX = e.clientX
-            let offSetY = e.clientY 
-          
-            document.addEventListener('mousemove', moveWindow)
-            document.addEventListener('mouseup', stopEvent)
-
-            function moveWindow(e) {
-                
-
-                window.tackledWindow.style.left = newOffsetX + 'px'
-                window.tackledWindow.style.top = newOffsetY + 'px'
-            }
-
-            function stopEvent() {
-                document.removeEventListener('mousemove', moveWindow)
-            }
-        }
-        */
-
     })
+
 }
 
 
@@ -328,10 +355,10 @@ function moveWindowEvent(window) {
 
                 function newOffset(e) {
                     e.preventDefault()
-                    newOffsetX = e.clientX - offsetX
-                    newOffsetY = e.clientY - offsetY
-                    currentWindow.style.left = newOffsetX + 'px'
-                    currentWindow.style.top = newOffsetY + 'px'
+                    offSetX = e.clientX - offsetX
+                    offSetY = e.clientY - offsetY
+                    currentWindow.style.left = offSetX + 'px'
+                    currentWindow.style.top = offSetY + 'px'
                 }
 
                 function removingEvents() {
