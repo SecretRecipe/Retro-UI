@@ -225,9 +225,9 @@ function startWindowEvents(windows) {
     windows.forEach((window) => {
 
         let appState = document.getElementById(window.id)   
+
         window.tackledHeader.addEventListener('mousedown', getHeaderEvents)
-        window.tackledHeader.addEventListener('mousedown', elementDrag)
-        document.addEventListener('mousedown', elementDrag)
+        window.tackledWindow.addEventListener('mousedown', elementDrag)
 
         function getHeaderEvents(event) {
 
@@ -261,10 +261,11 @@ function startWindowEvents(windows) {
             let height = parseInt(getAttribute(window.tackledWindow, 'height'))
             let width = parseInt(getAttribute(window.tackledWindow, 'width'))
 
-            let tackledElement = event.target.className
-
+            
             document.addEventListener('mousemove', dragEvent)
             document.addEventListener('mouseup', stopEvent)
+            
+            let tackledElement = event.target.className
 
             function dragEvent(event) {
 
@@ -279,7 +280,7 @@ function startWindowEvents(windows) {
 
                 if (tackledElement == 'Window Border') {
 
-                    tackledBorder = event.target.id
+                    let tackledBorder = event.target.id
 
                     if (tackledBorder == 'top' || tackledBorder == 'corner-1' || tackledBorder == 'corner-2') {
                         let newOffsetTop = top + offSetY
@@ -304,9 +305,7 @@ function startWindowEvents(windows) {
                         let newWidth = width - window.getXSpan(event, X, event.clientX)
                         window.changeWidth(window.tackledWindow, newWidth)
                     }
-                
-                    window.distantiateTop(window.tackledWindow, newOffsetTop)
-                    window.distantiateLeft(window.tackledWindow, newOffsetLeft)
+        
                 }
             }
 
