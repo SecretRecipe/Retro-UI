@@ -213,3 +213,9 @@ button {
     color: white;
 }
 
+.Desktop .Open.Window > object {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+

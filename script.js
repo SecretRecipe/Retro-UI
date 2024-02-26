@@ -83,7 +83,7 @@ function createNewWindow(cellClicked, footer, size = 20) {
         const top = document.createElement('div')
         top.style.width = '100%';
         top.style.height = size + 'px';
-        top.style.backgroundColor = 'red';
+        top.style.backgroundColor = 'transparent';
         top.style.position = 'absolute';
         top.style.top = - (size / 2) + 'px';
         top.style.left = '0px';
@@ -138,7 +138,7 @@ function createNewWindow(cellClicked, footer, size = 20) {
         const corner2 = document.createElement('div');
         corner2.style.width = size + 'px';
         corner2.style.height = size + 'px';
-        corner2.style.backgroundColor = 'pink';
+        corner2.style.backgroundColor = 'transparent';
         corner2.style.position = 'absolute';
         corner2.style.top = - (size / 2) + 'px';
         corner2.style.right = - (size / 2) + 'px';
@@ -194,27 +194,31 @@ function createNewWindow(cellClicked, footer, size = 20) {
         let closeButton = document.createElement('button')
         let fullButton = document.createElement('button')
 
+        
         minimizeButton.id = 'minimize-button'
         minimizeButton.innerHTML = '_'
         closeButton.id = 'close-button'
         closeButton.innerHTML = 'X'
         fullButton.id = 'full-button'
         fullButton.innerHTML = '<i class="bx bx-window"></i>'
-
+        
+        let windowContent = document.createElement('object')
+        windowContent.setAttribute('data', `pages/${cellClickedID}/${cellClickedID}.html`)
         let footerWindow = document.createElement('div')
         footerWindow.className = 'Footer Open'
         footerWindow.innerHTML = `<img src = "images/icons/${cellClickedID}.ico">`
         footerWindow.append(document.createTextNode(cellClickedID))
-
+        
         buttonContainer.append(minimizeButton, fullButton, closeButton)
         windowHeader.append(appTitle)
         windowHeader.append(buttonContainer)
         newWindow.append(windowHeader)
+        newWindow.append(windowContent)
         desktop.append(newWindow)
         footer.append(footerWindow)
-
+        
         cellClicked.className = cellClicked.className.replace('Closed', 'Open')
-
+        
         openWindows.push(new Window(newWindow, windowHeader, footerWindow, newWindow.id))
 
     }
