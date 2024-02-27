@@ -22,18 +22,17 @@ button {
 
 .Desktop .Menu {
     display: grid;
-    grid-template-rows: 20% 60% 20%;
+    grid-template-rows: 15% 70% 12%;
     position: absolute;
     height: 65%;
-    bottom: 0px;
+    width: 25%;
+    bottom: 2%;
     border-radius: 0px 25px;
     background: white;
 }
 
-.Desktop .Menu > div {
-    flex: 1;
-    overflow: hidden;
-}
+
+
 
 .Desktop .Menu .Top {
     display: flex;
@@ -41,14 +40,15 @@ button {
     gap: 2%;
     padding: 2%;
     border-radius: 0px 10px 0px 0px;
-    border: 2px solid rgb(0, 14, 117);
-    box-shadow: inset 0px 5px  rgb(49, 149, 195);
-    background: linear-gradient(#0C5FCA, #5ca5ff);
+    background: linear-gradient(#095BC8, #3C95EA);
+    box-shadow: inset 0px 15px 5px -10px rgb(94, 162, 252);
+    color: white;
+    text-shadow: 2px 2px black;
 }
 
 .Desktop .Menu .Top .User.Icon {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border: 5px solid #b8d5ff;
     border-radius: 25%;
     object-fit: cover;
@@ -63,25 +63,36 @@ button {
 .Desktop .Menu .Middle {
     display: grid;
     cursor: pointer;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 40% auto;
     border-right: 2px solid rgb(0, 14, 117);
+}
+
+.Desktop .Menu .Middle > session{
+   background: red;
 }
 
 .Desktop .Menu .Middle > div {
     display: grid;
     grid-template-rows: repeat(auto-fit, 1fr);
-
+    font-size: 1rem;
 }
 
-.Desktop .Menu .Cell {
+.Desktop .Menu .Middle .Right > session:hover,
+.Desktop .Menu .Middle .Left > div > session:hover {
+    background: rgb(82, 122, 255);
+    color: white;
+}
+
+.Desktop .Menu .Middle .Cell {
     display: flex;
     align-items: center;
     gap: 2%;
     padding: 2%;
 }
 
-.Desktop .Menu .Left {
+.Desktop .Menu  .Middle .Left {
     background: #D0E8FB;
+    border-left: 1px solid grey;
 }
 
 .Desktop .Menu .All.Programs {
@@ -101,6 +112,8 @@ button {
 .Desktop .Menu .Footer {
     display: flex;
     justify-content: end;
+    align-items: center;
+    padding: 2%;
     gap: 2%;
     background: linear-gradient(#0C5FCA, #5ca5ff);
     border-right: 2px solid rgb(0, 14, 117);
@@ -135,8 +148,8 @@ button {
     display: flex;
     justify-content: start;
     align-items: center;
-    gap: 5%;
-    padding: 2%;
+    gap: 15%;
+    padding: 1%;
     border-radius: 0px 5px 5px 5px;
     color: white;
     text-shadow: 2px 2px black;
@@ -152,7 +165,9 @@ button {
 .Desktop .Footer.Bar #menu-button {
     display: flex;
     gap: 10px;
-    width: 9%;
+    width: 8%;
+    position: relative;
+    left: -10px;
     height: 100%;
     font-size: 20px;
     border: none;
@@ -167,7 +182,6 @@ button {
     width: 32px;
     height: 32px;
 }
-
 
 .Menu.Hidden {
     display: none;
@@ -213,8 +227,7 @@ button {
     color: white;
 }
 
-.Desktop .Open.Window > object {
-    overflow: hidden;
+.Desktop .Open.Window > embed {
     width: 100%;
     height: 100%;
 }
