@@ -1,0 +1,76 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.Main {
+    width: 100vw;
+    height: 100vh;
+}
+
+.Header {
+    display: flex;
+    align-items: center;
+    padding: 1%;
+    height: 3%;
+    background: rgb(219, 219, 216);
+}
+
+.Header > ul {
+    display: flex;
+    gap: 50px;
+    list-style: none;
+}
+
+.Center {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 70% 30%;
+    width: 100%;
+    height: 95%;
+}
+
+.Center > div {
+    background: rgb(219, 219, 216);
+}
+
+.Center .Tools {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2%;
+    padding: 10%;
+}
+
+.Center .Tools > div > button {
+    width: 25px;
+    height: 25px;
+}
+
+.Center .Canvas {
+    border: 1px solid grey;
+    background: white;
+}
+
+.Center .Color.Picker {
+    border-top: 1px solid grey;
+}
+
+.Center .Colors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 1px solid grey;
+    gap: 15px;
+}
+
+.Center .Colors session {
+    display: flex;
+    background: red;
+}
+
+.Center .Colors  session > div{
+    border: 2px solid black;
+    width: 25px;
+    height: 25px;
+}

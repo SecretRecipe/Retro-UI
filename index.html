@@ -1,128 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Windows XP UI</title>
-    <link rel = "stylesheet" href = "styles.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src = "script.js"></script>
-    <script type= "module" src="border-creator.js"></script>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RETRO UI</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <script type = "module" src="script.js"></script>
+    
 </head>
+
 <body>
-    <div class = "Desktop" id = "desktop">
-        <div class = "Menu" id = "menu">
-            <div class = "Top">
-                <div class = "User Icon"><img src = "images/menu-icon.jpg"></div>
-                <h3> Murilo </h3>
+    
+    <div class="Desktop">
+        
+        
+        <div class="Menu">
+            
+            <div class="Top">
+                <div class="Icon"><img src="images/menu-icon.jpg"></div>
+                <div class="Username"> <span> Murilo </span></div>
             </div>
-            <div class = "Middle">
-                <div class = "Right">
-                    <session class = "Internet Cell Closed" id = 'internet explorer'>
-                        <img src = "images/icons/internet explorer.ico">
-                        <div>
-                            <h5> Internet</h5>
-                            <h6> Internet Explorer</h6>
+            
+            <div class="Middle">
+                
+                <div class="Left Side">
+                    <session>
+                        <div class="Cell Closed" id='Internet Explorer'>
+                            <img src="images/icons/Internet Explorer.ico">
+                            <div class="App-title">
+                                <h4> Internet</h4>
+                                <span> Internet Explorer</span>
+                            </div>
+                        </div>
+                        <div class="Cell Closed" id="Email">
+                            <img src="images/icons/Email.ico">
+                            <div class="App-title">
+                                <h4> E-mail </h4>
+                                <span> E-mail </span>
+                            </div>
+                        </div>
+                        <div class="Cell Closed" id="Paint">
+                            <img src="images/icons/Paint.ico">
+                            <span> Paint </span>
+                        </div>
+                        <div class="Cell Closed" id="Calculator">
+                            <img src="images/icons/Calculator.ico">
+                            <span> Calculator </span>
+                        </div>
+                        <div class="Cell Closed" id="Windows Media Player">
+                            <img src="images/icons/Windows Media Player.ico">
+                            <span> Windows Media Player </span>
+                        </div>
+                        <div class="Cell Closed" id="Notepad">
+                            <img src="images/icons/Notepad.ico">
+                            <span> Notepad </span>
                         </div>
                     </session>
-                    <session class = "Email Cell Closed" id = 'email'>
-                        <img src = "images/icons/email.ico">
-                        <div>
-                            <h5>Email</h5>
-                            <h6> Email</h6>
+                    <session>
+                        <div class="All program session">
+                            <button> All Programs <img src="images/icons/allprograms.ico"></button>
                         </div>
                     </session>
-                    <session class = "Media Cell Closed" id = 'windows media player'>
-                        <img src = "images/icons/windows media player.ico">
-                        <p> Windows Media Player </p>
+                </div>
+                
+                <div class="Right Side">
+                    <session>
+                        <div class="Cell Closed">
+                            <img src="images/icons/my documents.ico">
+                            <span> My Documents </span>
+                        </div>
+                        <div class="Cell Closed">
+                            <img src="images/icons/my pictures.ico">
+                            <span> My Pictures </span>
+                        </div>
+                        <div class="Cell Closed">
+                            <img src="images/icons/my music.ico">
+                            <span> My Music </span>
+                        </div>
+                        <div class="Cell Closed">
+                            <img src="images/icons/my computer.ico">
+                            <span> My Computer </span>
+                        </div>
                     </session>
-                    <session class = "MSN Cell Closed" id = 'microsoft messenger'>
-                        <img src = "images/icons/microsoft messenger.ico">
-                        <p> Microsoft Messenger </p>
+                    <session>
+                        <div class="Cell Closed">
+                            <img src="images/icons/control-panel.ico">
+                            <span> Control Panel </span>
+                        </div>
+                        <div class="Cell Closed">
+                            <img src="images/icons/connect to.ico">
+                            <span> Connect to... </span>
+                        </div>
+                        <div class="Cell Closed">
+                            <img src="images/icons/printers and faxers.ico">
+                            <span> Printers and Faxers </span>
+                        </div>
                     </session>
-                    <session class = "Paint Cell Closed" id = 'paint'>
-                        <img src = "images/icons/paint.ico">
-                        <p> Paint </p>
-                    </session>
-                    <session class = "Notepad Cell Closed" id = 'notepad'>
-                        <img src = "images/icons/notepad.ico">
-                        <p> Notepad </p>
-                    </session>
-                    <session class = "Calculator Cell Closed" id = 'calculator'>
-                        <img src = "images/icons/calculator.ico">
-                        <p> Calculator </p>
-                    </session>
-                    <session class = "All Programs">
-                        <h5> All programs </h5>
-                        <img src = "images/icons/allprograms.ico">
+                    <session>
+                        <div class="Cell Closed">
+                            <img src="images/icons/help.ico">
+                            <span> Help and Support </span>
+                        </div>
+                        <div class="Cell Closed">
+                            <img src="images/icons/search.ico">
+                            <span> Search </span>
+                        </div>
+                        <div class="Cell Closed">
+                            <img src="images/icons/run.ico">
+                            <span> Run </span>
+                        </div>
                     </session>
                 </div>
-                <div class = "Left">
-                    <div>
-                        <session class = "Cell Closed" id = 'my documents'>
-                            <img src = "images/icons/my documents.ico">
-                            <h5> My Documents </h5>
-                        </session>
-                        <session class = "Cell Closed" id = 'my recent documents'>
-                            <img src = "images/icons/my recent documents.ico">
-                            <h5> My Recent Documents </h5>
-                        </session>
-                        <session class = "Cell Closed" id = 'my pictures'>
-                            <img src = "images/icons/my pictures.ico">
-                            <h5> My Pictures </h5>
-                        </session>
-                        <session class = "Cell Closed" id = 'my computer'>
-                            <img src = "images/icons/my computer.ico">
-                            <h5> My Computer </h5>
-                        </session>
-                    </div>
-                    <div>
-                        <session class = "Cell Closed" id = 'control panel'>
-                            <img src = "images/icons/control panel.ico">
-                            <h5> Control Panel </h5>
-                        </session>
-                        <session class = "Cell Closed" id = 'connect to'>
-                            <img src = "images/icons/connect to.ico">
-                            <h5> Connect To </h5>
-                        </session>
-                        <session class = "Cell Closed" id = 'printers and faxers'>
-                            <img src = "images/icons/printers and faxers.ico">
-                            <h5> Printers And Faxes </h5>
-                        </session>
-                    </div>
-                    <div>
-                        <session class = "Cell Closed" id = 'help'>
-                            <img src = "images/icons/help.ico">
-                            <h5>  Help and Support </h5>
-                        </session>
-                        <session class = "Cell Closed" id = 'search'>
-                            <img src = "images/icons/search.ico">
-                            <h5> Search </h5>
-                        </session>
-                        <session class = "Cell Closed" id = 'run'>
-                            <img src = "images/icons/run.ico">
-                            <h5> Run </h5>
-                        </session>
-                    </div>
-                </div>  
             </div>
-            <div class = "Footer">
-                <div class = "Buttons">
-                    <button><img src = "images/icons/logoff.ico"></button>
-                    <p> Log Off </p>
+            
+            <div class="Bottom">
+                <div class="Buttons">
+                    <div class="Button container Log-off ">
+                        <button><img src="images/icons/logoff.ico"></button>
+                        <span> Log off </span>
+                    </div>
+                    <div class="Button container Turn-off">
+                        <button><img src="images/icons/turnoff.ico"></button>
+                        <span> Turn off </span>
+                    </div>
                 </div>
-                <div class = "Buttons">
-                    <button><img src = "images/icons/turnoff.ico"></button>
-                    <p> Turn Off </p>
-                </div>
-            </div>         
+            </div>
         </div>
-        <div id = 'footer-bar' class = "Footer Bar">
-            <button id = "menu-button">
-                <img src = "images/icons/windows.ico">
-                <p> Start </p>
+        
+        <div class="TaskBar">
+            
+            
+            <button id="Windows-button">
+                <div class="Button inner content">
+                    <img src="images/main/windows-logo.png">
+                    <span> Start </span>
+                </div>
             </button>
+            <div class="Time container">
+                <span> 10: 44 </span>
+            </div>
         </div>
     </div>
+    
+    
 </body>
+
 </html>
