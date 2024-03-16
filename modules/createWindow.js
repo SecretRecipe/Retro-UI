@@ -1,8 +1,8 @@
 export function openWindow(app, size = 20) {
     
     let newWindow = document.createElement('div')
-    newWindow.className = 'Open Window'
-
+    newWindow.className = 'Open Window' 
+    newWindow.id = 'Window' + ' ' + app.id
 
     const top = document.createElement('div')
     top.style.width = '100%';
@@ -103,6 +103,7 @@ export function openWindow(app, size = 20) {
     
     let header = document.createElement('div')
     header.className = 'Header'
+    header.id = 'Header' + ' ' + app.id
     
     let appTitle = document.createElement('div')
     appTitle.className = 'App Title'
@@ -128,5 +129,7 @@ export function openWindow(app, size = 20) {
     newWindow.append(innerContent)
     
     document.body.append(newWindow)
-    
+
 }
+
+
