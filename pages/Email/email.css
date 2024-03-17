@@ -1,0 +1,77 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.Main {
+    width: 100vw;
+    height: 100vh;
+}
+
+.Header {
+    display: flex;
+    align-items: center;
+    padding: 1%;
+    height: 5vh;
+    background: rgb(219, 219, 216);
+}
+
+.Header > ul {
+    display: flex;
+    gap: 50px;
+    list-style: none;
+}
+
+.Menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 20%);
+    grid-template-rows: 100%;
+    width: 100%;
+    height: 15vh;
+    background: rgb(219, 219, 216);
+}
+
+.Menu > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border: 2px solid black;
+}
+
+.Search {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    height: 25vh;
+    width: 100%;
+    background: rgb(219, 219, 216);
+}
+
+.Search > * {
+    display: flex;
+    align-items: center;
+}
+
+.Search > session:nth-child(1),
+.Search > session:nth-child(3),
+.Search > session:nth-child(5) {
+    justify-content: center;
+}
+
+.Search > session > input {
+    width: 90%;
+}
+
+.Tools {
+    height: 10vh;
+    width: 100%;
+    border: 2px solid black;
+    background: rgb(219, 219, 216);
+}
+
+.Message {
+    height: 40vh;
+    background: white;
+}

@@ -1,0 +1,42 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.Main {
+    width: 100vw;
+    height: 100vh;
+}
+
+.Header {
+    display: flex;
+    align-items: center;
+    padding: 1%;
+    height: 5vh;
+    background: rgb(219, 219, 216);
+}
+
+.Header > ul {
+    display: flex;
+    gap: 50px;
+    list-style: none;
+}
+
+.Visor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+    height: 10vh;
+    background: rgb(219, 219, 216);
+}
+
+.Visor > session {
+    background: white;
+    width: 98%;
+    height: 30px;
+    box-shadow: inset 1px 1px 1px black;
+}
+
+
