@@ -41,26 +41,38 @@
     border: 2px solid black;
 }
 
-.Search {
+.Menu > session > img {
+    width: 40px;
+    height: 40px;
+}
+
+.Send {
     display: grid;
     grid-template-columns: 10% 90%;
-    height: 25vh;
+    height: 18vh;
     width: 100%;
     background: rgb(219, 219, 216);
 }
 
-.Search > * {
+.Send > * {
     display: flex;
     align-items: center;
+    margin-left: 15px;
 }
 
-.Search > session:nth-child(1),
-.Search > session:nth-child(3),
-.Search > session:nth-child(5) {
+.Send > session > img {
+    width: 20px;
+    height: 20px;
+}
+
+.Send > session:nth-child(1),
+.Send > session:nth-child(3),
+.Send > session:nth-child(5) {
     justify-content: center;
 }
 
-.Search > session > input {
+
+.Send > session > input {
     width: 90%;
 }
 
