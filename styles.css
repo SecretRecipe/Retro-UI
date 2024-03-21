@@ -89,7 +89,7 @@
     height: 90%;
  }
 
- .Menu .Middle .Left.Side .Cell.Closed {
+ .Menu .Middle .Left.Side .Cell {
     display: flex;
     align-items: center;
     flex: 1;

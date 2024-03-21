@@ -1,6 +1,7 @@
 export function openWindow(app, size = 20) {
     
-    let newWindow = document.createElement('div')
+    if (app.className.includes('Closed')) {
+        let newWindow = document.createElement('div')
     newWindow.className = 'Open Window' 
     newWindow.id = 'Window' + ' ' + app.id
 
@@ -132,6 +133,10 @@ export function openWindow(app, size = 20) {
     newWindow.append(innerContent)
     
     document.body.append(newWindow)
+
+    app.className = app.className.replace('Closed', 'Open')
+    }
+    
 
 }
 
