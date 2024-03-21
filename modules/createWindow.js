@@ -116,9 +116,12 @@ export function openWindow(app, size = 20) {
     let buttonContainer = document.createElement('div')
     buttonContainer.className = 'Window Buttons'
     let closeButton = document.createElement('button')
+    closeButton.innerHTML = '<img src = "images/icons/close-window.png">'
     let minimizeButton = document.createElement('button')
+    minimizeButton.innerHTML = '<img src = "images/icons/minimize-window.png">'
     let fullButton = document.createElement('button')
-    buttonContainer.append(closeButton, minimizeButton, fullButton)
+    fullButton.innerHTML = '<img src = "images/icons/full-window.jpg">'
+    buttonContainer.append(minimizeButton, fullButton, closeButton)
     
     let innerContent = document.createElement('object')
     innerContent.setAttribute('data', `pages/${app.id}/${app.id}.html`)

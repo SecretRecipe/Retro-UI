@@ -326,6 +326,8 @@
     height: 32px;
 }
 
+
+
 .Open.Window .Header .Window.Buttons {
     display: flex;
     align-items: center;
@@ -335,10 +337,18 @@
     height: 100%;
 }
 
-.Open.Window .Header .Window.Buttons button {
+.Open.Window .Header .Window.Buttons > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 30px;
     height: 30px;
-    background: white;
+    border: none;
+}
+
+.Open.Window .Header .Window.Buttons > button > img{
+    width: 100%;
+    height: 100%;
 }
 
 .Open.Window > object {
