@@ -3,6 +3,7 @@ import { openWindow } from './modules/createWindow.js'
 document.addEventListener('DOMContentLoaded', () => {
 
     let menuApps = Array.from(document.getElementsByClassName('Cell Closed'))
+    let footer = document.getElementById('taskbar')
 
     menuApps.forEach((app) => {
         
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         
         app.addEventListener('click', () => {
-            openWindow(app)
+            openWindow(app, footer)
             addEvents(app)
         })
         
@@ -62,6 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
             }
+
+
         
             if (e.target.className.includes('Border')) {
                 
