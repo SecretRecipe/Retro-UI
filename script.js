@@ -28,13 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     function addEvents(app) {
-
-        let window = document.getElementById('Window' + ' '+ app.id)
+   
+        let window = document.getElementById('Window' + ' ' + app.id)
         let header = document.getElementById('Header' + ' ' + app.id)
+        let footer = document.getElementById('footer')
         let borders = Array.from(document.getElementsByClassName('Window Border'))
+        let buttons = Array.from(document.getElementsByClassName('Window Buttons'))
 
         header.addEventListener('mousedown', getDragEvents)
+        
         borders.forEach((border) => border.addEventListener('mousedown', getDragEvents))
+        buttons.forEach((button) => button.addEventListener('mousedown', getButtonEvents))
 
         function getDragEvents(e) {
           
@@ -100,6 +104,36 @@ document.addEventListener('DOMContentLoaded', () => {
             
       
     
+        }
+
+        function getButtonEvents(e) {
+            
+            let element = e.target.className.replace('Btn ', '')
+            let tackledWindow = document.getElementById('Window' + ' ' + element)
+            let tackledFooter = document.getElementById('footer-' + element)
+    
+            if (e.target.id === 'minimize-window') {
+                tackledWindow.style.display = 'none'
+                let windowState = getAttribute(tackledWindow, 'display')
+                if (windowState === 'none') {
+                    tackledFooter.addEventListener('click', () => {
+                        tackledWindow.style.display ='block'
+                    }) 
+                }
+            }
+            
+
+            if (e.target.id === 'full-window') {
+                tackledWindow.style.width = '100%'
+                tackledWindow.style.height = '96%'
+            }
+
+            if (e.target.id == 'close-window') {
+                tackledFooter.remove()
+                tackledWindow.remove()
+                app.className = app.className.replace('Open', 'Closed')
+            }
+            
         }
     }
 })

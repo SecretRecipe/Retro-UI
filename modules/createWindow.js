@@ -115,19 +115,19 @@ export function openWindow(app, footer, size = 20) {
         appTitle.append(icon, span)
         
         let buttonContainer = document.createElement('div')
-        buttonContainer.className = 'Window Buttons'
-        buttonContainer.id = 'windows-buttons'
-        
+        buttonContainer.className =  'Window Buttons'
+        buttonContainer.id = 'window-buttons'
+
         let closeButton = document.createElement('button')
-        closeButton.innerHTML = '<img src = "images/icons/close-window.png">'
+        closeButton.innerHTML = `<img src = "images/icons/close-window.png" id = "close-window" class = "Btn ${app.id}">`
         closeButton.id = 'close-button'
 
         let minimizeButton = document.createElement('button')
-        minimizeButton.innerHTML = '<img src = "images/icons/minimize-window.png">'
+        minimizeButton.innerHTML = `<img src = "images/icons/minimize-window.png" id = "minimize-window" class = "Btn ${app.id}">`
         minimizeButton.id = 'minimize-button'
         
         let fullButton = document.createElement('button')
-        fullButton.innerHTML = '<img src = "images/icons/full-window.jpg">'
+        fullButton.innerHTML = `<img src = "images/icons/full-window.jpg" id =  "full-window" class = "Btn ${app.id}">`
         fullButton.id = 'full-button'
 
         buttonContainer.append(minimizeButton, fullButton, closeButton)
@@ -137,6 +137,7 @@ export function openWindow(app, footer, size = 20) {
         
         let openFooter = document.createElement('div')
         openFooter.className = 'Open Footer'
+        openFooter.id = 'footer' + '-' + app.id
         
         let footerIcon = document.createElement('img')
         footerIcon.setAttribute('src', `images/icons/${app.id}.ico`)
@@ -153,6 +154,7 @@ export function openWindow(app, footer, size = 20) {
         document.body.append(newWindow)
 
         app.className = app.className.replace('Closed', 'Open')
+    
     }
     
 
