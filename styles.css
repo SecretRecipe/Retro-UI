@@ -226,7 +226,6 @@
     position: relative;
     width: 100vw;
     height: 5%;
-    background: red;
     background: #245EDB;
     box-shadow: inset 0px 15px 4px -10px #6092ff;
     font-family: Tahoma, sans-serif;
@@ -239,7 +238,7 @@
     align-items: center;
     position: relative;
     left: -20px;
-    width: 10%;
+    width: 8.5%;
     height: 100%;
     border-radius: 20px;
     border: none;
@@ -251,18 +250,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    width: 200px;
-    margin-left: 10px;
+    gap: 5%;
+    width: 100%;
+    margin-left: 5%;
 }
 
 .TaskBar .Button.inner.content img {
-    width: 30px; 
-    height: 30px;
+    width: 20%; 
+    height: 5%;
 }
 
 .TaskBar .Button.inner.content span {
-    font-size: 28px;
+    font-size: 200%;
     font-style: italic;
     color: white;
     text-shadow: 2px 2px black;
@@ -271,8 +270,6 @@
 .TaskBar #taskbar {
     display: flex;
     width: 100%;
-    border: 2px solid black;
-    background: red;
 }
 
 .TaskBar .Time.container {
