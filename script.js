@@ -1,4 +1,5 @@
 import { openWindow } from './modules/createWindow.js'
+import { getAttribute  } from './modules/getAttribute.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -33,13 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let header = document.getElementById('Header' + ' ' + app.id)
         let footer = document.getElementById('footer')
         let borders = Array.from(document.getElementsByClassName('Window Border'))
-        let buttons = Array.from(document.getElementsByClassName('Window Buttons'))
+        //let buttons = Array.from(document.getElementsByClassName('Window Buttons'))
 
-        header.addEventListener('mousedown', getDragEvents)
+        //header.addEventListener('mousedown', getDragEvents)
         
-        borders.forEach((border) => border.addEventListener('mousedown', getDragEvents))
-        buttons.forEach((button) => button.addEventListener('mousedown', getButtonEvents))
-
+        //borders.forEach((border) => border.addEventListener('mousedown', getDragEvents))
+        /*
         function getDragEvents(e) {
           
             let X = e.clientX // Gets initial X offset clicking
@@ -67,9 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
             }
-
-
-        
+            
             if (e.target.className.includes('Border')) {
                 
                 let tackledBorder = e.target.id
@@ -105,39 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
       
     
         }
-
-        function getButtonEvents(e) {
-            
-            let element = e.target.className.replace('Btn ', '')
-            let tackledWindow = document.getElementById('Window' + ' ' + element)
-            let tackledFooter = document.getElementById('footer-' + element)
-    
-            if (e.target.id === 'minimize-window') {
-                tackledWindow.style.display = 'none'
-                let windowState = getAttribute(tackledWindow, 'display')
-                if (windowState === 'none') {
-                    tackledFooter.addEventListener('click', () => {
-                        tackledWindow.style.display ='block'
-                    }) 
-                }
-            }
-            
-
-            if (e.target.id === 'full-window') {
-                tackledWindow.style.width = '100%'
-                tackledWindow.style.height = '96%'
-            }
-
-            if (e.target.id == 'close-window') {
-                tackledFooter.remove()
-                tackledWindow.remove()
-                app.className = app.className.replace('Open', 'Closed')
-            }
-            
-        }
+        */
+        
     }
 })
 
-function getAttribute(element, style) {
-    return window.getComputedStyle(element).getPropertyValue(style)
-}

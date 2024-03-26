@@ -1,3 +1,8 @@
+
+import { getButtonElements } from './buttons.js'
+import { moveWindow } from './moveWindow.js'
+import { resizeWindow } from './resizeWindow.js'
+
 export function openWindow(app, footer, size = 20) {
     
     if (app.className.includes('Closed')) {
@@ -154,10 +159,13 @@ export function openWindow(app, footer, size = 20) {
         document.body.append(newWindow)
 
         app.className = app.className.replace('Closed', 'Open')
-    
+        
+        getButtonElements(app, newWindow, openFooter, minimizeButton, fullButton, closeButton)
+        moveWindow(newWindow, header)
+        resizeWindow(newWindow, top, bottom, right, left, corner1, corner2, corner3, corner4)
+
     }
     
-
 }
 
 
