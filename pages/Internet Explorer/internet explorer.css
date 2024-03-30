@@ -6,6 +6,7 @@
 .Main {
     width: 100vw;
     height: 100vh;
+    font-family: 'Tahoma', sans-serif;
 }
 
 input {
@@ -16,53 +17,77 @@ input {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 5%;
-    border-bottom: 1px solid grey;
-    background: rgb(219, 219, 216);
+    height: 3%;
+    font-size: 15px;   
+    box-shadow: inset 0px -1px 3px grey;
+    background: #F1EEE2;
 }
 
 .Header > ul {
     display: flex;
-    gap: 50px;
+    gap: 20%;
     margin-left: 5px;
     list-style: none;
 }
 
 .Top.Menu {
-    display: grid;
-    grid-template-columns: 20% 20% auto;
-    grid-template-rows: 100%;
+    display: flex;
     width: 100%;
-    height: 10%;
-    background: rgb(219, 219, 216);
-    padding: 1%;
+    height: 8%;
+    background: #F1EEE2;
 }
 
-.Top.Menu > session {
+.Top.Menu > section,
+.Top.Menu > section > div {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1.5%;
-    border-left: 1px solid grey;
 }
 
-.Top.Menu > session > img {
-    width: 32px;
-    height: 32px;
+.Top.Menu > section > div > img {
+    width: 45px;
+    height: 45px;
+}
+
+.Top.Menu .Section.One,
+.Top.Menu .Section.Two {
+    border-right: 1px solid grey;
+}
+
+.Top.Menu .Section.One {
+    width: auto;
+    gap: 20px;
+}
+
+.Top.Menu .Section.One > div {
+    height: auto;
+}
+
+.Top.Menu .Section.One #next {
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+}
+
+.Top.Menu .Section.One i {
+    font-size: 12px;
+}
+
+.Top.Menu .Section.Two {
+    width: auto;
+    gap: 25px;
+}
+
+.Top.Menu .Section.Two > div {
+    padding: 20px;
+    gap: 5px;
 }
 
 .Search {
     display: flex;
     align-items: center;
-    gap: 2%;
-    height: 5%;
-    padding: 0.5%;
-    border: 1px solid grey;
-    background: rgb(219, 219, 216);;
-}
-
-.Search > input {
-    width: 50%;
+    height: 4%;
+    background: #F1EEE2;
+    box-shadow: inset 0px -1px 3px grey;
 }
 
 .Content {
@@ -70,10 +95,50 @@ input {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80%;
+    position: relative;
+    height: 85%;
+    width: 100%;
     background: white;
 }
 
-.Content > img {
-    width: 30%;
+.Content .Google-Header {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    height: 5%;
+    top: 0px;
+}
+
+.Content .Google-Header > ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+
+.Content .Google.Buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    gap: 30px;
+}
+
+.Content .Google.Buttons > img {
+    width: 50%;
+}
+
+.Content .Google.Buttons > input {
+    width: 40%;
+    height: 20%;
+    outline: none;
+    padding: 5px;
+    font-size: 15px;
+}
+
+
+.Content .Submit {
+    width: 100px;
+    height: 50px;
 }

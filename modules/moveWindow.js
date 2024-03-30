@@ -12,6 +12,7 @@ export function moveWindow(window, header) {
         document.addEventListener('mouseup', stopDrag)
             
         function startDrag(e) {
+            window.style.cursor = 'move'
             let offsetX = e.clientX - X
             let offsetY = e.clientY - Y
             window.style.left = offsetX + left + 'px'
@@ -19,6 +20,7 @@ export function moveWindow(window, header) {
         }
 
         function stopDrag() {
+            window.style.cursor = 'arrow'
             document.removeEventListener('mousemove', startDrag)
         }
 
