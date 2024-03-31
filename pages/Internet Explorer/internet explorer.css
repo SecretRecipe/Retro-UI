@@ -3,6 +3,9 @@
     margin: 0;
 }
 
+:root {
+    --main-color: #F1EEE2;
+}
 .Main {
     width: 100vw;
     height: 100vh;
@@ -20,7 +23,7 @@ input {
     height: 3%;
     font-size: 15px;   
     box-shadow: inset 0px -1px 3px grey;
-    background: #F1EEE2;
+    background: var(--main-color);
 }
 
 .Header > ul {
@@ -34,7 +37,7 @@ input {
     display: flex;
     width: 100%;
     height: 8%;
-    background: #F1EEE2;
+    background: var(--main-color);
 }
 
 .Top.Menu > section,
@@ -86,7 +89,7 @@ input {
     display: flex;
     align-items: center;
     height: 4%;
-    background: #F1EEE2;
+    background: var(--main-color);
     box-shadow: inset 0px -1px 3px grey;
 }
 
@@ -126,7 +129,7 @@ input {
 }
 
 .Content .Google.Buttons > img {
-    width: 50%;
+    width: 35%;
 }
 
 .Content .Google.Buttons > input {
@@ -141,4 +144,12 @@ input {
 .Content .Submit {
     width: 100px;
     height: 50px;
+}
+
+/* CSS EVENTS */
+
+.Top.Menu > section > div > img:hover, 
+.Header > ul > li:hover {
+    cursor: pointer;
+    color: white;
 }

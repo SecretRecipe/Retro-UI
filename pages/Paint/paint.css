@@ -3,74 +3,120 @@
     margin: 0;
 }
 
+:root {
+    --main-color: #F1EEE2;
+}
+
 .Main {
     width: 100vw;
     height: 100vh;
+    font-family: Tahoma, sans-serif;
 }
 
 .Header {
     display: flex;
     align-items: center;
-    padding: 1%;
     height: 3%;
-    background: rgb(219, 219, 216);
+    background: var(--main-color);
+    box-shadow: inset 0px -1px 3px grey;
 }
 
 .Header > ul {
     display: flex;
     gap: 50px;
+    margin-left: 10px;
     list-style: none;
 }
 
 .Center {
     display: grid;
-    grid-template-columns: 20% 80%;
-    grid-template-rows: 70% 30%;
+    grid-template-columns: 5% 95%;
     width: 100%;
-    height: 95%;
+    height: 78%;
 }
 
 .Center > div {
-    background: rgb(219, 219, 216);
+    background: var(--main-color);
 }
 
 .Center .Tools {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2%;
-    padding: 10%;
+    gap: 20px;
+    height: 100%;
 }
 
-.Center .Tools > div > button {
-    width: 25px;
-    height: 25px;
+.Center .Tools > section:nth-child(1) {
+    margin-top: 10px;
+}
+
+.Center .Tools > section > div {
+    display: flex;
+    padding: 5px;
+    gap: 5px;
+}
+
+.Center .Tools > section > div > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+}
+
+.Center .Tools > section >  div > button > img {
+    width: 100%;
+    height: 100%;
+}
+
+.Center .Tools .Square.Area {
+    width: 50px;
+    height: 100px;
+    box-shadow: inset 1px 1px 5px rgb(181, 181, 181);
 }
 
 .Center .Canvas {
-    border: 1px solid grey;
+    border: 2px solid grey;
     background: white;
 }
 
-.Center .Color.Picker {
-    border-top: 1px solid grey;
-}
-
-.Center .Colors {
+.Bottom {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    gap: 1%;
+    height: 12%;
+    width: 100%;
     border-top: 1px solid grey;
-    gap: 15px;
+    background: var(--main-color);
 }
 
-.Center .Colors session {
-    display: flex;
-    background: red;
+.Bottom .Color.Picker {
+    width: 50px;
+    height: 50px;
+    margin-left: 0.8%;
+    box-shadow: inset 5px 5px 10px grey;
 }
 
-.Center .Colors  session > div{
-    border: 2px solid black;
-    width: 25px;
-    height: 25px;
+.Bottom .Colors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 7%);
+    grid-template-rows: repeat(2, 50%);
+    gap: 5px;
+    width: 20%;
+    height: 50%;
+}
+
+.Bottom .Colors > div {
+    box-shadow: inset 2px 2px black;
+}
+
+
+/* CSS EVENTS */ 
+
+.Bottom .Colors > div:hover, 
+.Center .Tools > section > div > button:hover, 
+.Header > ul > li:hover {
+    cursor: pointer;
+    color: white;
 }
