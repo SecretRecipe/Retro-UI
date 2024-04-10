@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notepad</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel = 'stylesheet' href = 'media.css'>
+</head>
+<body>
+    <div class = 'Header'>
+        <ul>
+            <li>File</li>
+            <li>Edit</li>
+            <li>Format</li>
+            <li> View </li>
+            <li> Help </li>
+        </ul>
+    </div>
+    <div class = 'Content'></div>
+    <div class = 'Player'>
+        <div class = 'Media'>
+            <div class = 'Slider'>""</div>
+            <div></div>
+        </div>
+        <div class = 'Buttons'>
+            <div>
+                <section>
+                    <button><i class='bx bx-play'></i></button>
+                    <button><i class='bx bx-pause' ></i></button>
+                    <button><i id = 'square' class='bx bxs-square'></i></button>
+                </section>
+                <section>
+                    <button>| <i class='bx bx-skip-previous' ></i></button>
+                    <button><i class='bx bx-skip-previous' ></i></button>
+                    <button><i class='bx bx-skip-next'></i></button>
+                    <button><i class='bx bx-skip-next'></i> |</button>
+                </section>
+                <section>
+                    <button><i class='bx bx-skip-next-circle'></i></button>
+                </section>
+            </div>
+            <div>
+                <section>
+                    <i class = 'bx bx-volume-low'></i>
+                </section>
+                <section class = 'Slider'></section>
+                <section></section>
+            </div>
+        </div>
+    </div>
+    <script>
+        const slider = document.querySelectorAll('.Slider')
+        slider.forEach((slide) => {
+            slide.addEventListener('mousedown', (e) => {
+                let X = e.clientX
+                document.addEventListener('mousemove', startMove)
+                document.addEventListener('stopmove', stopMove)
+                function startMove(e) {
+                    console.log(e.clientX - X)
+                    slide.style.left = `${e.clientX - X}px`
+                }
+                function stopMove() {
+                    document.removeEventListener('mousemove', startMove)
+                }
+            })
+        }) 
+    </script>
+</body>
+</html>
