@@ -5,6 +5,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let menuApps = Array.from(document.getElementsByClassName('Cell Closed'))
     let footer = document.getElementById('taskbar')
+    
+    let windowsButton = document.getElementById('Windows-button')
+    let menu = document.querySelector('.Menu')
+
+    windowsButton.addEventListener('mouseenter', () => {
+        windowsButton.style.background = 'darkgreen'
+        windowsButton.style.cursor = 'pointer'
+    })
+
+    windowsButton.addEventListener('mouseleave', () => {
+        windowsButton.style.background = 'green'
+    })
+
+    windowsButton.addEventListener('click', () => {
+        menu.classList.toggle('Open')
+    })
 
     menuApps.forEach((app) => {
         
