@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+:root {
+   --main-color:  
+}
+
 body {
     font-family: Tahoma, Geneva, Verdana, sans-serif;
 }

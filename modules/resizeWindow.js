@@ -12,36 +12,58 @@ export function resizeWindow(window, top, bottom, right, left, corner1, corner2,
             let top = window.offsetTop 
             let X = e.clientX 
             let Y = e.clientY
+
             let width = parseInt(getAttribute(window, 'width'))
             let height = parseInt(getAttribute(window, 'height'))
 
+            
             document.addEventListener('mousemove', startDrag)
             document.addEventListener('mouseup', stopDrag)
             
             function startDrag(e) {
                 
                 let tackledBorder = border.id 
-                console.log(tackledBorder)
+
+                let newHeight 
+                let newWidth 
+                let newTop 
+                let newLeft
+
+                let rightPosition
+
                 if (tackledBorder == 'top'  || tackledBorder == 'corner-1' || tackledBorder == 'corner-2') {
-                    window.style.top = (top + (e.clientY - Y)) + 'px'
-                    console.log(height)
-                    window.style.height = (height - (e.clientY - Y)) + 'px'
+                    newTop = (top + (e.clientY - Y)) 
+                    newHeight = (height - (e.clientY - Y)) 
                 }
 
                 if (tackledBorder == 'left' || tackledBorder == 'corner-1' || tackledBorder == 'corner-3') {
-                    window.style.left = (left + (e.clientX - X)) + 'px'
-                    window.style.width = (width - (e.clientX - X)) + 'px'
+                    newLeft = (left + (e.clientX - X)) 
+                    newWidth = (width - (e.clientX - X)) 
                 }
                 
                 if (tackledBorder == 'bottom' || tackledBorder == 'corner-3' || tackledBorder == 'corner-4') { 
-                    window.style.height = (height - (Y - e.clientY)) + 'px'     
+                    newHeight = (height - (Y - e.clientY))    
                 }
 
                 if (tackledBorder == 'right' || tackledBorder == 'corner-2' || tackledBorder == 'corner-4') {
-                    window.style.width = (width - (X - e.clientX)) + 'px'         
+                    newWidth = (width - (X - e.clientX))     
                 }
-            }
 
+                newLeft = newLeft == undefined ? 'px' : newLeft
+                newTop = newTop == undefined ? 'px' : newTop
+                newHeight = newHeight == undefined ? 'px' : newHeight
+                newWidth = newWidth == undefined ? 'px' : newWidth
+                rightPosition = parseInt(getAttribute(window, 'right'))
+                if (newHeight >= 500 || newWidth >= 500) {  
+                   
+                    window.style.height = newHeight + 'px'
+                    window.style.width = newWidth + 'px'
+                    window.style.left = newLeft + 'px'
+                    window.style.top = newTop + 'px'
+                            
+                }
+                
+            }
             function stopDrag() {
                 document.removeEventListener('mousemove', startDrag)
             }
