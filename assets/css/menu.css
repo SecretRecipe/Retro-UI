@@ -1,0 +1,194 @@
+
+.Menu {
+    width: 400px;
+    height: 600px;
+    position: absolute;
+    bottom: 3.5%;
+    overflow: hidden;
+    text-shadow: none;
+    border-radius: 0px 22px 0px 0px;
+    border: 2px solid rgb(0, 45, 123);
+}
+
+.Menu.Open {
+    display: block;
+}
+
+.Menu .Top {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 15%;
+    border-radius: 0px 20px 0px 0px;
+    background: linear-gradient(var(--main-blue), var(--light-blue));
+    box-shadow: inset 0rem 1.25rem 0.4rem -1rem var(--white-shadow);
+}
+
+.Menu .Top .Icon {
+    max-width: 60px;
+    max-height: 60px;
+    overflow: hidden;
+    margin-left: 15px;
+    border: 3px solid rgb(221, 221, 221);
+    border-radius: 15px;
+}
+
+.Menu .Top .Icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.Menu .Top .Username {
+    margin-left: 15px;
+    font-size: 2.5rem;
+    color: white;
+}
+
+.Menu .Middle {
+    display: flex;
+    background: white;
+    height: 70%;
+}
+
+.Menu .Middle .Left.Side {
+   display: flex;
+   flex-direction: column;
+   width: 45%;
+   height: 100%;
+}
+
+.Menu .Middle .Left.Side img {
+    width: 42px;
+    height: 42px;
+ }
+
+ .Menu .Middle .Left.Side > section:nth-child(1) {
+    height: 90%;
+ }
+
+ .Menu .Middle .Left.Side .Cell {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 4px;
+    padding: 3px;
+    font-size: 12.5px;
+    font-weight: lighter;
+ }
+
+ .Menu .Middle .Left.Side > section:nth-child(2) {
+    display: flex;
+    align-items: center;
+    height: 20%;
+    border-top: 1px solid grey;
+ }
+
+ .Menu .Middle .Left.Side > section:nth-child(2) .All.program.session {
+    display: grid;
+    place-items: center;
+    margin-top: 15px;
+    width: 100%;
+ }
+
+ .Menu .Middle .Left.Side > section:nth-child(2)  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 50px;
+    width: 150px;
+    font-size: 13px;
+    font-weight: 500;
+    background: white;
+    border: none;
+    box-shadow: none;
+ }
+
+ .Menu .Middle .Left.Side > section:nth-child(2) img {
+    width: 18px;
+    height: 18px;
+ }
+
+.Menu .Middle .Right.Side {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: 100%;
+    background: #D7E7F8;
+    border-left: 1px solid grey;
+}
+
+.Menu .Middle .Right.Side > section {
+    font-size: 12.5px;
+    border-top: 1px solid grey;
+}
+
+.Menu .Middle .Right.Side > section:nth-child(1)  {
+    height: 40%;
+    font-weight: bolder;
+}
+
+.Menu .Middle .Right.Side > section:nth-child(2)  {
+    height: 30%;
+}
+
+.Menu .Middle .Right.Side > section:nth-child(3)  {
+    height: 30%;
+}
+
+
+
+.Menu .Middle .Right.Side .Cell.Closed {
+    height: 37.5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.Menu .Middle .Right.Side .Cell.Closed img {
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+}
+
+.Menu .Bottom {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background: #245EDB;
+    height: 15%;
+    color: white;
+}
+
+.Menu .Bottom .Buttons {
+    display: flex;
+    height: 80%;
+    width: 250px;
+    margin-right: 10px;
+}
+
+.Menu .Bottom .Buttons .Button.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.Menu .Bottom .Buttons button {
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.Menu .Bottom .Buttons button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.Menu .Bottom .Buttons .Log-off {
+    flex: 1;
+}
+
+.Menu .Bottom .Buttons .Turn-off {
+    flex: 1.2;
+}

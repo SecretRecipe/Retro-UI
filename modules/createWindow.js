@@ -114,7 +114,7 @@ export function openWindow(app, footer, size = 20) {
         let appTitle = document.createElement('div')
         appTitle.className = 'App Title'
         let icon = document.createElement('img')
-        icon.setAttribute('src', `images/icons/${app.id}.ico`)
+        icon.setAttribute('src', `assets/images/desktop-icons/${app.id}.ico`)
         let span = document.createElement('span')
         span.innerHTML = app.id 
         appTitle.append(icon, span)
@@ -124,28 +124,28 @@ export function openWindow(app, footer, size = 20) {
         buttonContainer.id = 'window-buttons'
 
         let closeButton = document.createElement('button')
-        closeButton.innerHTML = `<img src = "images/icons/close-window.png" id = "close-window" class = "Btn ${app.id}">`
+        closeButton.innerHTML = `<img src = "assets/images/desktop-icons/close-window.png" id = "close-window" class = "Btn ${app.id}">`
         closeButton.id = 'close-button'
 
         let minimizeButton = document.createElement('button')
-        minimizeButton.innerHTML = `<img src = "images/icons/minimize-window.png" id = "minimize-window" class = "Btn ${app.id}">`
+        minimizeButton.innerHTML = `<img src = "assets/images/desktop-icons/minimize-window.png" id = "minimize-window" class = "Btn ${app.id}">`
         minimizeButton.id = 'minimize-button'
         
         let fullButton = document.createElement('button')
-        fullButton.innerHTML = `<img src = "images/icons/full-window.jpg" id =  "full-window" class = "Btn ${app.id}">`
+        fullButton.innerHTML = `<img src = "assets/images/desktop-icons/full-window.jpg" id =  "full-window" class = "Btn ${app.id}">`
         fullButton.id = 'full-button'
 
         buttonContainer.append(minimizeButton, fullButton, closeButton)
         
         let innerContent = document.createElement('object')
-        innerContent.setAttribute('data', `pages/${app.id}/${app.id}.html`)
+        innerContent.setAttribute('data', `assets/pages/${app.id}.html`)
         
         let openFooter = document.createElement('div')
         openFooter.className = 'Open Footer'
         openFooter.id = 'footer' + '-' + app.id
         
         let footerIcon = document.createElement('img')
-        footerIcon.setAttribute('src', `images/icons/${app.id}.ico`)
+        footerIcon.setAttribute('src', `assets/images/desktop-icons/${app.id}.ico`)
         let footerSpan = document.createElement('span')
         footerSpan.innerHTML = app.id 
         openFooter.append(footerIcon, footerSpan)

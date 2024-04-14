@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let windowsButton = document.getElementById('Windows-button')
     let menu = document.querySelector('.Menu')
-
+    /*
     windowsButton.addEventListener('mouseenter', () => {
         windowsButton.style.background = 'darkgreen'
         windowsButton.style.cursor = 'pointer'
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     windowsButton.addEventListener('click', () => {
         menu.classList.toggle('Open')
     })
-
+    */
     menuApps.forEach((app) => {
         
         let backgroundColor = getAttribute(app, 'background-color')
