@@ -164,6 +164,10 @@ export function openWindow(app, footer, size = 20) {
         moveWindow(newWindow, header)
         resizeWindow(newWindow, top, bottom, right, left, corner1, corner2, corner3, corner4)
 
+        minimizeButton.style.cursor = 'pointer'
+        fullButton.style.cursor = 'pointer'
+        closeButton.style.cursor = 'pointer'
+
     }
     
 }
