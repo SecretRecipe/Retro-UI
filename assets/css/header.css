@@ -14,20 +14,21 @@ body {
 
 .Main {
     height: 100vh;
+    overflow: hidden;
     width: 100vw;
-    border: 2px solid black;
 }
 
 .Main .Header {
     display: flex;
     height: 3.5%;
+    width: 100%;
     background: var(--main-color);
 }
 
 .Main .Header > ul {
     display: flex;
     list-style: none;
-    gap: 30%;
+    gap: 20%;
     margin-left: 1%;
 }
 

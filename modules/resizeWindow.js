@@ -54,7 +54,7 @@ export function resizeWindow(window, top, bottom, right, left, corner1, corner2,
                 newHeight = newHeight == undefined ? 'px' : newHeight
                 newWidth = newWidth == undefined ? 'px' : newWidth
                 rightPosition = parseInt(getAttribute(window, 'right'))
-                if (newHeight >= 500 || newWidth >= 500) {  
+                if (newHeight >= 650 || newWidth >= 650) {  
                    
                     window.style.height = newHeight + 'px'
                     window.style.width = newWidth + 'px'
