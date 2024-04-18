@@ -28,7 +28,7 @@ body {
 .Main .Header > ul {
     display: flex;
     list-style: none;
-    gap: 20%;
+    gap: 30px;
     margin-left: 1%;
 }
 
