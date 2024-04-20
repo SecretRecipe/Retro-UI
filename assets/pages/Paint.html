@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paint</title>
-    <link rel = 'stylesheet' href = 'paint.css'>
+    <link rel = 'stylesheet' href = '../css/pages/paint.css'>
+    <link rel = 'stylesheet' href = '../css/header.css'>
 </head>
 <body>
     <div class = 'Main'>
@@ -18,51 +19,32 @@
                 <li>Help</li>
             </ul>
         </div>
-        <div class = "Center">
-            <div class = "Tools">
-                <section>
-                    <div>
-                        <button><img src = "images/star.png"></button>
-                        <button><img src = "images/dotted-square.png"></button>
-                    </div>
-                    <div>
-                        <button><img src = "images/eraser.png"></button>
-                        <button><img src = "images/bucket.png"></button>
-                    </div>
-                    <div>
-                        <button><img src = "images/color-picker.png"></button>
-                        <button><img src = "images/search.png"></button>
-                    </div>
-                    <div>
-                        <button><img src = "images/pencil.png"></button>
-                        <button><img src = "images/brush.png"></button>
-                    </div>
-                    <div>
-                        <button><img src = "images/spray.png"></button>
-                        <button><img src = "images/font.png"></button>
-                    </div>
-                    <div>
-                        <button><img src = "images/straight-line.png"></button>
-                        <button><img src = "images/curved-line.png"></button>
-                    </div>
-                    <div>
-                        <button><img src = "images/square.png"></button>
-                        <button><img src = "images/l-format.png"></button>
-                    </div>
-                    <div>
-                        <button><img src = "images/oval.png"></button>
-                        <button><img src = "images/round-circle.png"></button>
-                    </div>
-                </section>
-               <section>
-                   <div class = "Square Area"></div>
-               </section>
+    <div class = 'Content'>
+        <section class = 'Center'>
+            <div>
+                <div class = 'Tools'>
+                    <button><img src = '../images/pages/paint/star.png'></button>
+                    <button><img src = '../images/pages/paint/dotted-square.png'></button>
+                    <button><img src = '../images/pages/paint/eraser.png'></button>
+                    <button><img src = '../images/pages/paint/bucket.png'></button>
+                    <button><img src = '../images/pages/paint/color-picker.png'></button>
+                    <button><img src = '../images/pages/paint/search.png'></button>
+                    <button><img src = '../images/pages/paint/spray.png'></button>
+                    <button><img src = '../images/pages/paint/font.png'></button>
+                    <button><img src = '../images/pages/paint/straight-line.png'></button>
+                    <button><img src = '../images/pages/paint/curved-line.png'></button>
+                    <button><img src = '../images/pages/paint/square.png'></button>
+                    <button><img src = '../images/pages/paint/l-format.png'></button>
+                    <button><img src = '../images/pages/paint/oval.png'></button>
+                    <button><img src = '../images/pages/paint/round-circle.png'></button>
+                </div>
+                <div class = 'Space'></div>
             </div>
-            <div class = "Canvas"></div>
-        </div>
-        <div class = 'Bottom'>
-            <div class = "Color Picker"></div>
-            <div class = "Colors">
+            <div class = 'Canvas'></div>
+        </section>
+        <section class = 'Bottom'>
+            <div class = 'Panel'></div>
+            <div class = 'Colors'>
                 <div style = 'background: black'></div>
                 <div style = 'background: grey'></div>
                 <div style = 'background: darkred'></div>
@@ -88,8 +70,7 @@
                 <div style = 'background: lightblue'></div>
                 <div style = 'background: orange'></div>
             </div>
-        </div>
+        </section>
     </div>
-
 </body>
 </html>

@@ -167,6 +167,7 @@ export function openWindow(app, footer, size = 20) {
         minimizeButton.style.cursor = 'pointer'
         fullButton.style.cursor = 'pointer'
         closeButton.style.cursor = 'pointer'
+        openFooter.style.cursor = 'pointer'
 
     }
     
