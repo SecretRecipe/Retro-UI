@@ -48,6 +48,10 @@ button {
     gap: 20px;
 }
 
+button {
+    background: white;
+    box-shadow: inset 1px 1px 1px black;
+}
 
 button:hover {
     cursor: pointer;
