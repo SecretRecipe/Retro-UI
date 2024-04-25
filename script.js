@@ -3,7 +3,7 @@ import { getAttribute  } from './modules/getAttribute.js'
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    let menuApps = Array.from(document.getElementsByClassName('Cell Closed'))
+    let menuApps = Array.from(document.getElementsByClassName('Functional'))
     let footer = document.getElementById('taskbar')
     
     let windowsButton = document.getElementById('Windows-button')
